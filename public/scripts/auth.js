@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 // and redirect the user to the login page
                 // Otherwise, display an error message
                 if (response.ok) {
-                    showToast("Signed-up successfully!", "success");
                     window.location.replace("/login");
+                    showToast("Signed-up successfully!", "success");
                 } else {
                     showToast(data.message, "error");
                 }
@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "user");
-                    showToast(data.message, "success");
                     window.location.replace(`/${username}`);
                 } else {
                     showToast(data.message, "error");
@@ -113,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "admin");
-                    showToast(data.message, "success");
                     window.location.replace(`/admin/${username}`);
                 } else {
                     showToast(data.message, "error");
