@@ -50,7 +50,6 @@ p {
 }
 /* Toast Notification Styles */
 .toast {
-    visibility: hidden;
     position: fixed;
     top: 25px;
     left: 50%;
@@ -62,7 +61,6 @@ p {
 }
 
 .toast.show {
-    visibility: visible;
     transform: translate(-50%, 0);
     opacity: 1;
 }
