@@ -1,3 +1,4 @@
+// Redirect authorized user or admin
 function dashboardRedirect() {
 
     // Get the token, username, and role from local storage
