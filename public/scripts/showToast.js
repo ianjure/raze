@@ -1,4 +1,4 @@
-function showToast(message, type, duration=5000) {
+function showToast(message, type, duration = 3000) {
     const toast = document.getElementById("toast");
     const toastContent = document.querySelector(".toast-content");
     const toastMessage = document.getElementById("toast-message");
