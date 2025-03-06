@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 // and redirect the user to the login page
                 // Otherwise, display an error message
                 if (response.ok) {
-                    alert("Signed-up successfully!");
+                    showToast("Signed-up successfully!");
                     window.location.replace("/login");
                 } else {
-                    document.getElementById("user-signup-error").textContent = data.message;
+                    showToast(data.message);
                 }
             } catch (error) {
                 console.error("Signup failed:", error);
-                alert("Error signing up. Please try again.");
+                showToast("Error signing up. Please try again.");
             }
         });
     }
