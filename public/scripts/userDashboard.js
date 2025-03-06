@@ -1,5 +1,5 @@
 // Display user information
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     // Get the token, username, and role from local storage
     const token = localStorage.getItem("token");
@@ -35,4 +35,4 @@ window.onload = async () => {
         console.error("Error fetching user data:", error);
         alert("An error occurred. Please try again.");
     }
-};
+)};
