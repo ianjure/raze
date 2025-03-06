@@ -21,4 +21,4 @@ window.onload = () => {
 
     // Listen for system theme changes
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
-});
+};
