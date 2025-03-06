@@ -1,5 +1,5 @@
 // Protect routes from unauthorized access
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
     
     // Get the token, username, and role from local storage
     const token = localStorage.getItem("token");
@@ -38,4 +38,4 @@ window.onload = () => {
             return;
         }
     }
-};
+)};
