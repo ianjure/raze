@@ -14,7 +14,7 @@ function dashboardRedirect() {
         }
         return;
     }
-};
+}
 
 // Run on page load
 dashboardRedirect();
