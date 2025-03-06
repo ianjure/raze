@@ -16,8 +16,7 @@ function updateFavicon() {
 }
 
 // Wait for the page to load
-document.addEventListener("DOMContentLoaded", () => {
-    // Run on page load
+window.onload = () => {
     updateFavicon();
 
     // Listen for system theme changes
