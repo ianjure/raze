@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("role", "user");
                     window.location.replace(`/${username}`);
                 } else {
-                    document.getElementById("user-login-error").textContent = data.message;
+                    showToast(data.message);
                 }
             } catch (error) {
                 console.error("Login failed:", error);
-                alert("Error logging in. Please try again.");
+                showToast("Error logging in. Please try again.");
             }
         });
     }
@@ -114,11 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("role", "admin");
                     window.location.replace(`/admin/${username}`);
                 } else {
-                    document.getElementById("admin-login-error").textContent = data.message;
+                    showToast(data.message);
                 }
             } catch (error) {
                 console.error("Login failed:", error);
-                alert("Error logging in. Please try again.");
+                showToast("Error logging in. Please try again.");
             }
         });
     }
@@ -152,11 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("role");
                     window.location.replace("/login");
                 } else {
-                    alert(data.message);
+                    showToast(data.message);
                 }
             } catch (error) {
                 console.error("Logout failed:", error);
-                alert("Error logging out. Please try again.");
+                showToast("Error logging out. Please try again.");
             }
         });
     }
@@ -187,11 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("role");
                     window.location.replace("/admin/login");
                 } else {
-                    alert(data.message);
+                    showToast(data.message);
                 }
             } catch (error) {
                 console.error("Logout failed:", error);
-                alert("Error logging out. Please try again.");
+                showToast("Error logging out. Please try again.");
             }
         });
     }
