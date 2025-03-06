@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
+    // If any essential data is missing, redirect to login
+    if (!token || !username || !role) {
+        window.location.replace("/admin/login");
+        return;
+    }
+
     // Show loading screen while fetching data
     const loadingScreen = document.getElementById("loading");
     const dashboard = document.getElementById("dashboard");
