@@ -16,23 +16,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
 
-        // Handle the response
+        // Display data to dashboard
         if (response.ok) {
             const data = await response.json();
             document.getElementById("username").innerText = username;
             document.getElementById("level").innerText = `Level: ${data.level}`;
             document.getElementById("exp").innerText = `EXP: ${data.exp}`;
-        } else if (response.status === 401) {
-            // Handle unauthorized access (e.g., token expired)
-            alert("Your session has expired. Please log in again.");
-            window.location.replace("/login");
         } else {
-            // Handle other errors
-            const errorData = await response.json();
-            alert(errorData.message || "Failed to fetch user data.");
+            showToast("Failed to fetch user data.", "error");
         }
     } catch (error) {
         console.error("Error fetching user data:", error);
-        alert("An error occurred. Please try again.");
+        showToast("An error occurred. Please try again.", "error");
     }
 });

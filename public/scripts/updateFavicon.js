@@ -16,9 +16,9 @@ function updateFavicon() {
 }
 
 // Wait for the page to load
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
     updateFavicon();
 
     // Listen for system theme changes
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
-};
+});

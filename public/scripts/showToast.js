@@ -16,7 +16,7 @@ function showToast(message, type, duration = 3000) {
 window.showToast = showToast;
 
 // Show toast after successful sign up
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
     const toastMessage = localStorage.getItem("toastMessage");
     const toastType = localStorage.getItem("toastType");
 
@@ -25,4 +25,4 @@ window.onload = () => {
         localStorage.removeItem("toastMessage");
         localStorage.removeItem("toastType");
     }
-};
+});

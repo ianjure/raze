@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
         // Check if the user exists
         const existingUser = await User.findOne({ username: username });
         if (!existingUser) {
-            return res.status(500).json({ success: false, message: "User does not exists." });
+            return res.status(500).json({ success: false, message: "User does not exist." });
         }
 
         // Check if the password is correct
@@ -108,7 +108,7 @@ const loginAdmin = async (req, res) => {
         // Check if the admin exists
         const existingAdmin = await Admin.findOne({ username: username });
         if (!existingAdmin) {
-            return res.status(500).json({ success: false, message: "Admin does not exists." });
+            return res.status(500).json({ success: false, message: "Admin does not exist." });
         }
 
         // Check if the password is correct

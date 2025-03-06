@@ -17,6 +17,6 @@ function dashboardRedirect() {
 }
 
 // Run on page load after DOM is fully loaded
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
     dashboardRedirect();
-};
+});
