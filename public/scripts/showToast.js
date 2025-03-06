@@ -1,6 +1,6 @@
 function showToast(message, type, duration = 3000) {
     const toast = document.getElementById("toast");
-    const toastContent = document.querySelector(".toast-content");
+    const toastContent = document.getElementById("toast-content");
     const toastMessage = document.getElementById("toast-message");
     
     toastMessage.textContent = message;
@@ -14,10 +14,6 @@ function showToast(message, type, duration = 3000) {
 }
 
 window.showToast = showToast;
-
-window.addEventListener("load", () => {
-    document.getElementById("toast").style.visibility = "visible";
-});
 
 // Show toast after successful sign up
 document.addEventListener("DOMContentLoaded", () => {
