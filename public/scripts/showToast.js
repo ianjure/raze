@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.showToast = showToast;
 });
 
-window.addEventListener("load", () => {
-    document.getElementById("toast").style.visibility = "visible";
-});
-
 // Show toast after successful sign up
 document.addEventListener("DOMContentLoaded", () => {
     const toastMessage = localStorage.getItem("toastMessage");
