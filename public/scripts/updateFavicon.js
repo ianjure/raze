@@ -13,7 +13,7 @@ function updateFavicon() {
 
     // Append new favicon
     document.head.appendChild(newFavicon);
-}
+};
 
 // Run on page load
 updateFavicon();
