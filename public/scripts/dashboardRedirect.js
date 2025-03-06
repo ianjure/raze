@@ -6,7 +6,7 @@ function dashboardRedirect() {
     const role = localStorage.getItem("role");
       
     // Redirect to dashboard if token, username, or role exists in local storage
-    if (token || username || role) {
+    if (token && username && role) {
         if (role === "admin") {
             window.location.replace(`/admin/${username}`);
         } else {
@@ -16,5 +16,5 @@ function dashboardRedirect() {
     }
 }
 
-// Run on page load
-dashboardRedirect();
+// Run on page load after DOM is fully loaded
+document.addEventListener("DOMContentLoaded", dashboardRedirect);
