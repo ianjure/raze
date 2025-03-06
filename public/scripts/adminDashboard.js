@@ -8,4 +8,4 @@ window.onload = () => {
 
     // Set username on the page
     document.getElementById("username").innerText = username;
-});
+};
