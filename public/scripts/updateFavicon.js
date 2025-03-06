@@ -15,6 +15,7 @@ function updateFavicon() {
     document.head.appendChild(newFavicon);
 }
 
+// Wait for the page to load
 document.addEventListener("DOMContentLoaded", () => {
     // Run on page load
     updateFavicon();
