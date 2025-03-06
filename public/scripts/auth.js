@@ -1,4 +1,4 @@
-// To handle user and admin authentication
+// Handle user and admin authentication
 window.onload = () => {
 
     // If the user signup form exists, add an event listener to it
