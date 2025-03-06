@@ -27,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 // and redirect the user to the login page
                 // Otherwise, display an error message
                 if (response.ok) {
+                    localStorage.setItem("toastMessage", "Signed-up successfully!");
+                    localStorage.setItem("toastType", "success");
                     window.location.replace("/login");
-                    showToast("Signed-up successfully!", "success");
                 } else {
                     showToast(data.message, "error");
                 }
