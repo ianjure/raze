@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Otherwise, display an error message
                 if (response.ok) {
                     alert("Signed-up successfully!");
-                    window.location.href = "/login";
+                    window.location.replace("/login");
                 } else {
                     document.getElementById("user-signup-error").textContent = data.message;
                 }
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "user");
-                    window.location.href = `/${username}`;
+                    window.location.replace(`/${username}`);
                 } else {
                     document.getElementById("user-login-error").textContent = data.message;
                 }
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "admin");
-                    window.location.href = `/admin/${username}`;
+                    window.location.replace(`/admin/${username}`);
                 } else {
                     document.getElementById("admin-login-error").textContent = data.message;
                 }
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("username");
                     localStorage.removeItem("role");
-                    window.location.href = "/login";
+                    window.location.replace("/login");
                 } else {
                     alert(data.message);
                 }
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("username");
                     localStorage.removeItem("role");
-                    window.location.href = "/admin/login";
+                    window.location.replace("/admin/login");
                 } else {
                     alert(data.message);
                 }
