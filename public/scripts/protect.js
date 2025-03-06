@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Redirect based on user role
-    if (username && role === "user") {
+    if (role === "user") {
         if (currentPage.startsWith("/admin")) {
             window.location.replace(`/${username}`); // Prevent users from accessing admin pages
             return;
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    if (username && role === "admin") {
+    if (role === "admin") {
         if (!currentPage.startsWith("/admin")) {
             window.location.replace(`/admin/${username}`); // Prevent admins from accessing user pages
             return;

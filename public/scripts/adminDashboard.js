@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!token || !username || !role) {
         window.location.replace("/admin/login");
         return;
+    } else {
+        // Set username on the page
+        document.getElementById("username").innerText = username;
+
+        // Hide loading screen and show dashboard
+        loadingScreen.style.display = "none";
+        dashboard.style.display = "block";
     }
-
-    // Set username on the page
-    document.getElementById("username").innerText = username;
-
-    // Hide loading screen and show dashboard
-    loadingScreen.style.display = "none";
-    dashboard.style.display = "block";
 });

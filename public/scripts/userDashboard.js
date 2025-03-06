@@ -12,31 +12,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
-    try {
-        // Send a GET request to the server to fetch user data
-        const response = await fetch("/api/user/", {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
+    // If any essential data is missing, redirect to login
+    if (!token || !username || !role) {
+        window.location.replace("/admin/login");
+        return;
+    } else {
+        try {
+            // Send a GET request to the server to fetch user data
+            const response = await fetch("/api/user/", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            // Display data to dashboard
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById("username").innerText = username;
+                document.getElementById("level").innerText = `Level: ${data.level}`;
+                document.getElementById("exp").innerText = `EXP: ${data.exp}`;
+
+                // Hide loading screen and show dashboard
+                loadingScreen.style.display = "none";
+                dashboard.style.display = "block";
+            } else {
+                showToast("Failed to fetch user data.", "error");
             }
-        });
-
-        // Display data to dashboard
-        if (response.ok) {
-            const data = await response.json();
-            document.getElementById("username").innerText = username;
-            document.getElementById("level").innerText = `Level: ${data.level}`;
-            document.getElementById("exp").innerText = `EXP: ${data.exp}`;
-
-            // Hide loading screen and show dashboard
-            loadingScreen.style.display = "none";
-            dashboard.style.display = "block";
-        } else {
-            showToast("Failed to fetch user data.", "error");
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            showToast("An error occurred. Please try again.", "error");
         }
-    } catch (error) {
-        console.error("Error fetching user data:", error);
-        showToast("An error occurred. Please try again.", "error");
     }
 });
