@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // If any essential data is missing, redirect to login
     if (!token || !username || !role) {
-        window.location.replace("/admin/login");
+        window.location.replace("/login");
         return;
     } else {
         try {
