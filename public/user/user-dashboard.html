@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razeboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/svg+xml" href="../assets/raze-dark-1.svg" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/svg+xml" href="../assets/raze-light-1.svg" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- High Priority Scripts -->
+    <script src="../scripts/protect.js" defer></script>
+    <script src="../scripts/showToast.js" defer></script>
+    <script src="../scripts/auth.js" defer></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -17,14 +22,11 @@
     <!-- User Dashboard -->
     <div class="dashboard" id="dashboard">
         <h2>Welcome, <span id="username"></span>!</h2>
-        <h4 id="level"></h2>
-        <h4 id="exp"></h2>
+        <h4><span id="level"></span> <span id="exp"></span></h4>
         <button id="user-logout-button">Logout</button>
     </div>
     
-    <script src="../scripts/protect.js" defer></script>
-    <script src="../scripts/showToast.js" defer></script>
-    <script src="../scripts/auth.js" defer></script>
+    <!-- Low Priority Scripts -->
     <script src="../scripts/userDashboard.js" defer></script>
     <script src="../scripts/updateFavicon.js" defer></script>
 </body>

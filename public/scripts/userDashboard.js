@@ -1,16 +1,16 @@
 // Display user information
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // Get the token, username, and role from local storage
-    const token = localStorage.getItem("token");
-    const username = localStorage.getItem("username");
-    const role = localStorage.getItem("role");
-
     // Show loading screen while fetching data
     const loadingScreen = document.getElementById("loading");
     const dashboard = document.getElementById("dashboard");
     loadingScreen.style.display = "block";
     dashboard.style.display = "none";
+
+    // Get the token, username, and role from local storage
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+    const role = localStorage.getItem("role");
 
     try {
         // Send a GET request to the server to fetch user data

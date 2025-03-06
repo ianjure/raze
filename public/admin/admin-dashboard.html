@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/svg+xml" href="../assets/raze-dark-1.svg" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/svg+xml" href="../assets/raze-light-1.svg" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- High Priority Scripts -->
+    <script src="../scripts/protect.js" defer></script>
+    <script src="../scripts/showToast.js" defer></script>
+    <script src="../scripts/auth.js" defer></script>
 </head>
+
 <body>
     <!-- Loading Screen -->
-    <div class="loading" id="loading">
+    <div id="loading">
         <p>Loading...</p>
     </div>
 
@@ -20,9 +26,7 @@
         <button id="admin-logout-button">Logout</button>
     </div>
 
-    <script src="../scripts/protect.js" defer></script>
-    <script src="../scripts/showToast.js" defer></script>
-    <script src="../scripts/auth.js" defer></script>
+    <!-- Low Priority Scripts -->
     <script src="../scripts/adminDashboard.js" defer></script>
     <script src="../scripts/updateFavicon.js" defer></script>
 </body>
