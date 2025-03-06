@@ -51,17 +51,17 @@ p {
 /* Toast Notification Styles */
 .toast {
   position: fixed;
-  top: 50%;
+  top: 16px;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  opacity: 0;
+  transform: translate(-50%, -100px);
   z-index: 1000;
   max-width: 300px;
+  opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .toast.show {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, 0);
   opacity: 1;
 }
 
@@ -74,13 +74,11 @@ p {
   text-align: center;
 }
 
-/* Success Toast */
 .toast.success {
   background-color: #22c55e !important;
   color: white !important;
 }
 
-/* Error Toast */
 .toast.error {
   background-color: #ef4444 !important;
   color: white !important;
