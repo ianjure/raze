@@ -51,7 +51,7 @@ p {
 /* Toast Notification Styles */
 .toast {
   position: fixed;
-  top: 16px;
+  top: 25px;
   left: 50%;
   transform: translate(-50%, -100px);
   z-index: 1000;
