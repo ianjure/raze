@@ -16,23 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Redirect based on user role
-    if (role === "user") {
+    if (username && role === "user") {
         if (currentPage.startsWith("/admin")) {
             window.location.replace(`/${username}`); // Prevent users from accessing admin pages
             return;
         }
-        if (username && currentPage !== `/${username}`) {
+        if (currentPage !== `/${username}`) {
             window.location.replace(`/${username}`); // Ensure users are on their own page
             return;
         }
     }
 
-    if (role === "admin") {
+    if (username && role === "admin") {
         if (!currentPage.startsWith("/admin")) {
             window.location.replace(`/admin/${username}`); // Prevent admins from accessing user pages
             return;
         }
-        if (username && currentPage !== `/admin/${username}`) {
+        if (currentPage !== `/admin/${username}`) {
             window.location.replace(`/admin/${username}`); // Ensure admins are on their own page
             return;
         }
