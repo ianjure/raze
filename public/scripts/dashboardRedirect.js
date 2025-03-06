@@ -18,5 +18,5 @@ function dashboardRedirect() {
 
 // Run on page load after DOM is fully loaded
 window.onload = () => {
-    dashboardRedirect;
+    dashboardRedirect();
 };
