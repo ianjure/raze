@@ -74,12 +74,12 @@ p {
   text-align: center;
 }
 
-.toast.success {
+.toast-content.success {
   background-color: #22c55e !important;
   color: white !important;
 }
 
-.toast.error {
+.toast-content.error {
   background-color: #ef4444 !important;
   color: white !important;
 }
