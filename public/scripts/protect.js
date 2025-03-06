@@ -1,5 +1,6 @@
 // Protect routes from unauthorized access
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
+    
     // Get the token, username, and role from local storage
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
