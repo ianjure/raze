@@ -1,5 +1,5 @@
-// To display user information as user
-window.onload = () => {
+// Display user information
+window.onload = async () => {
 
     // Get the token, username, and role from local storage
     const token = localStorage.getItem("token");
