@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <p>Loading...</p>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="dashboard" id="dashboard">
         <h2>Welcome, <span id="username"></span>!</h2>
         <button id="admin-logout-button">Logout</button>
     </div>
+
     <script src="../scripts/protect.js" defer></script>
     <script src="../scripts/showToast.js" defer></script>
     <script src="../scripts/auth.js" defer></script>

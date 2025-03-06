@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
+    // Show loading screen while fetching data
+    const loadingScreen = document.getElementById("loading");
+    const dashboard = document.getElementById("dashboard");
+    loadingScreen.style.display = "block";
+    dashboard.style.display = "none";
+
     try {
         // Send a GET request to the server to fetch user data
         const response = await fetch("/api/user/", {
@@ -22,6 +28,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("username").innerText = username;
             document.getElementById("level").innerText = `Level: ${data.level}`;
             document.getElementById("exp").innerText = `EXP: ${data.exp}`;
+
+            // Hide loading screen and show dashboard
+            loadingScreen.style.display = "none";
+            dashboard.style.display = "block";
         } else {
             showToast("Failed to fetch user data.", "error");
         }

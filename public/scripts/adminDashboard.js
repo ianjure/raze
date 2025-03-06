@@ -6,6 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
+    // Show loading screen while fetching data
+    const loadingScreen = document.getElementById("loading");
+    const dashboard = document.getElementById("dashboard");
+    loadingScreen.style.display = "block";
+    dashboard.style.display = "none";
+
     // Set username on the page
     document.getElementById("username").innerText = username;
+
+    // Hide loading screen and show dashboard
+    loadingScreen.style.display = "none";
+    dashboard.style.display = "block";
 });
