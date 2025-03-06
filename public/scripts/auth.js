@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "user");
-                    window.location.href = `/${data.username}`;
+                    window.location.href = `/${username}`;
                 } else {
                     document.getElementById("user-login-error").textContent = data.message;
                 }
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "admin");
-                    window.location.href = `/admin/${data.username}`;
+                    window.location.href = `/admin/${username}`;
                 } else {
                     document.getElementById("admin-login-error").textContent = data.message;
                 }
