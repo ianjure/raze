@@ -13,7 +13,13 @@ function showToast(message, type, duration = 3000) {
     }, duration);
 }
 
-window.showToast = showToast;
+document.addEventListener("DOMContentLoaded", () => {
+    window.showToast = showToast;
+});
+
+window.addEventListener("load", () => {
+    document.getElementById("toast").style.visibility = "visible";
+});
 
 // Show toast after successful sign up
 document.addEventListener("DOMContentLoaded", () => {
