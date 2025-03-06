@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+    <!-- Sign Up Form -->
     <div class="container">
         <h2>Sign Up</h2>
         <form id="user-signup-form">
@@ -16,9 +17,16 @@
             <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Sign Up</button>
         </form>
-        <p id="user-signup-error" class="error"></p>
         <p>Already have an account? <a href="/login">Login</a></p>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+          <span id="toast-message"></span>
+        </div>
+    </div>
+    
     <script src="../scripts/dashboardRedirect.js" defer></script>
     <script src="../scripts/auth.js" defer></script>
     <script src="../scripts/updateFavicon.js" defer></script>
