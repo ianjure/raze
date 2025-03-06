@@ -19,6 +19,9 @@ router.get("/:username", (req, res) => {
 });
 
 // Admin static routes
+router.get("/admin", (req, res) => {
+    res.redirect("/admin/login");
+});
 router.get("/admin/login", (req, res) => {
     res.sendFile(path.join(__dirname, "../../public/admin/admin-login.html"));
 });
