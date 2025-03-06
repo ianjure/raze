@@ -5,4 +5,4 @@ function showToast(message, duration = 3000) {
     setTimeout(() => {
       toast.classList.remove('show');
     }, duration);
-};
+}
