@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.replace(`/${username}`); // Prevent users from accessing admin pages
             return;
         }
-        if (currentPage !== `/${username}`) {
+        if (username && currentPage !== `/${username}`) {
             window.location.replace(`/${username}`); // Ensure users are on their own page
             return;
         }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.replace(`/admin/${username}`); // Prevent admins from accessing user pages
             return;
         }
-        if (currentPage !== `/admin/${username}`) {
+        if (username && currentPage !== `/admin/${username}`) {
             window.location.replace(`/admin/${username}`); // Ensure admins are on their own page
             return;
         }
