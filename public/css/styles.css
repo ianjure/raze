@@ -74,14 +74,14 @@ p {
   text-align: center;
 }
 
-/* Success Style */
-.toast.success .toast-content {
-  background-color: #22c55e;
-  color: white;
+/* Success Toast */
+.toast.success {
+  background-color: #22c55e !important;
+  color: white !important;
 }
 
-/* Error Style */
-.toast.error .toast-content {
-  background-color: #ef4444;
-  color: white;
+/* Error Toast */
+.toast.error {
+  background-color: #ef4444 !important;
+  color: white !important;
 }
