@@ -6,18 +6,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
-    // Redirect to login page if the token, username, or role does not exist
-    if (!token || !username || !role) {
-        window.location.replace("/admin/login");
-        return;
-    }
-
-    // Prevent non-admin users from accessing the admin dashboard
-    if (role !== "admin") {
-        window.location.replace(`/${username}`);
-        return;
-    }
-
     // Set username on the page
     document.getElementById("username").innerText = username;
 });
