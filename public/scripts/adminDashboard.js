@@ -1,4 +1,4 @@
-// To display user information as admin
+// Display admin information
 window.onload = () => {
 
     // Get the token, username, and role from local storage
