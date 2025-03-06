@@ -15,8 +15,10 @@ function updateFavicon() {
     document.head.appendChild(newFavicon);
 }
 
-// Run on page load
-updateFavicon();
+document.addEventListener("DOMContentLoaded", () => {
+    // Run on page load
+    updateFavicon();
 
-// Listen for system theme changes
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
+    // Listen for system theme changes
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
+});
