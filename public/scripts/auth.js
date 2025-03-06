@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 // and redirect the user to the login page
                 // Otherwise, display an error message
                 if (response.ok) {
-                    showToast("Signed-up successfully!");
+                    showToast("Signed-up successfully!", "success");
                     window.location.replace("/login");
                 } else {
-                    showToast(data.message);
+                    showToast(data.message, "error");
                 }
             } catch (error) {
                 console.error("Signup failed:", error);
-                showToast("Error signing up. Please try again.");
+                showToast("Error signing up. Please try again.", "error");
             }
         });
     }
@@ -70,13 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "user");
+                    showToast(data.message, "success");
                     window.location.replace(`/${username}`);
                 } else {
-                    showToast(data.message);
+                    showToast(data.message, "error");
                 }
             } catch (error) {
                 console.error("Login failed:", error);
-                showToast("Error logging in. Please try again.");
+                showToast("Error logging in. Please try again.", "error");
             }
         });
     }
@@ -112,13 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", "admin");
+                    showToast(data.message, "success");
                     window.location.replace(`/admin/${username}`);
                 } else {
-                    showToast(data.message);
+                    showToast(data.message, "error");
                 }
             } catch (error) {
                 console.error("Login failed:", error);
-                showToast("Error logging in. Please try again.");
+                showToast("Error logging in. Please try again.", "error");
             }
         });
     }
@@ -152,11 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("role");
                     window.location.replace("/login");
                 } else {
-                    showToast(data.message);
+                    showToast(data.message, "error");
                 }
             } catch (error) {
                 console.error("Logout failed:", error);
-                showToast("Error logging out. Please try again.");
+                showToast("Error logging out. Please try again.", "error");
             }
         });
     }
@@ -187,11 +189,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("role");
                     window.location.replace("/admin/login");
                 } else {
-                    showToast(data.message);
+                    showToast(data.message, "error");
                 }
             } catch (error) {
                 console.error("Logout failed:", error);
-                showToast("Error logging out. Please try again.");
+                showToast("Error logging out. Please try again.", "error");
             }
         });
     }
