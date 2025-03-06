@@ -35,4 +35,4 @@ window.onload = async () => {
         console.error("Error fetching user data:", error);
         alert("An error occurred. Please try again.");
     }
-});
+};
