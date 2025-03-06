@@ -1,5 +1,5 @@
 // To display user information as user
-document.addEventListener("DOMContentLoaded", async () => {
+window.onload = () => {
 
     // Get the token, username, and role from local storage
     const token = localStorage.getItem("token");
