@@ -1,5 +1,5 @@
 // Handle user and admin authentication
-window.onload = async () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     // If the user signup form exists, add an event listener to it
     const userSignupForm = document.getElementById("user-signup-form");
