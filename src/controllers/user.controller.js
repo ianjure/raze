@@ -23,7 +23,7 @@ const getLeaderboard = async (req, res) => {
 
     try {
         // Find the top 10 users and sort them by level and experience points in descending order
-        const users = await User.find().select('-password').sort({ level: -1, exp: -1 }).limit(10);
+        const users = await User.find({}, { username: 1, level: 1, exp: 1 }).sort({ level: -1, exp: -1 }).limit(10);
         return res.status(200).json({ success: true, data: users });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
