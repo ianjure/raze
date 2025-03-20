@@ -25,7 +25,7 @@ const getUsers = async (req, res) => {
 
     try {
         // Find all users and sort them by created date in descending order
-        const users = await User.find().select('-password').sort({ createdAt: -1 });
+        const users = await User.find().select("-password").sort({ createdAt: -1 });
         return res.status(200).json({ success: true, data: users });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
