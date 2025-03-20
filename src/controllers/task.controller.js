@@ -26,7 +26,7 @@ const getTasks = async (req, res) => {
 
     try {
         // Find all tasks that belong to the user and sort them by created date in descending order
-        const tasks = await Task.find({ user: userId }).sort({ createdAt: -1 });
+        const tasks = await Task.find({ user: userId }).select(["-_id", "task", "status"]).sort({ createdAt: -1 });
         return res.status(200).json({ success: true, data: tasks });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
