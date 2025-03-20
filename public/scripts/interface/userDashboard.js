@@ -2,9 +2,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     // Show loading screen while fetching data
-    const loadingScreen = document.getElementById("loading");
-    const dashboard = document.getElementById("dashboard");
-    loadingScreen.style.display = "block";
+    const dashboard = document.getElementsByTagName("body")[0];
     dashboard.style.display = "none";
 
     // Get the token, username, and role from local storage
@@ -35,7 +33,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.getElementById("exp").innerText = `EXP: ${data.exp}`;
 
                 // Hide loading screen and show dashboard
-                loadingScreen.style.display = "none";
                 dashboard.style.display = "block";
             } else {
                 showToast("Failed to fetch user data.", "error");
