@@ -48,7 +48,7 @@ const createTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
     const updateTodo = async (req, res) => {
         const todoId = req.params.id;
-        const { description, status } = req.body;
+        const { description, status } = req.body; // Get data from request body
         const userId = req.user?._id; // Get the authenticated user's ID
     
         if (!mongoose.Types.ObjectId.isValid(todoId)) {
