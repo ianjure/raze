@@ -11,13 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // If any essential data is missing, redirect to login
     if (!token || !username || !role) {
-        const loginPage = currentPage.includes("admin") ? "/admin/login" : "/login";
-        window.location.replace(loginPage);
+        window.location.replace("/login");
         return;
     }
 
     // Redirect based on user role
-    if (role === "user") {
+    if (role === "User") {
         if (currentPage.startsWith("/admin")) {
             window.location.replace(`/${username}`); // Prevent users from accessing admin pages
             return;
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    if (role === "admin") {
+    if (role === "Admin") {
         if (!currentPage.startsWith("/admin")) {
             window.location.replace(`/admin/${username}`); // Prevent admins from accessing user pages
             return;

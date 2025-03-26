@@ -2,9 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // Show loading screen while fetching data
-    const loadingScreen = document.getElementById("loading");
-    const dashboard = document.getElementById("dashboard");
-    loadingScreen.style.display = "block";
+    const dashboard = document.getElementsByTagName("body")[0];
     dashboard.style.display = "none";
 
     // Get the token, username, and role from local storage
@@ -14,14 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // If any essential data is missing, redirect to login
     if (!token || !username || !role) {
-        window.location.replace("/admin/login");
+        window.location.replace("/login");
         return;
     } else {
         // Set username on the page
         document.getElementById("username").innerText = username;
 
         // Hide loading screen and show dashboard
-        loadingScreen.style.display = "none";
         dashboard.style.display = "block";
     }
 });
