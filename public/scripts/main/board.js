@@ -244,7 +244,8 @@ const handleDelete = (event) => {
     currentTask = event.target.closest(".task");
 
     // Show the modal for confirmation
-    modal.querySelector(".preview").innerText = currentTask.innerText.substring(0, 20) + "...";
+    const taskText = currentTask.innerText;
+    modal.querySelector(".preview").innerText = taskText.length > 20 ? taskText.substring(0, 20) + "..." : taskText;
     modal.showModal();
 };
 // Function to handle task input blur event
