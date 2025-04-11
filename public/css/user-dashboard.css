@@ -284,16 +284,18 @@ header {
     border: 1px solid transparent;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
-.confirm-modal button#cancel {
+.confirm-modal #cancel {
     border-color: var(--cancel-color);
 }
-.confirm-modal button#confirm {
+.confirm-modal #confirm {
     border-color: var(--confirm-color);
     background: var(--confirm-color);
+    color: white;
 }
-.confirm-modal button#confirm:hover {
+.confirm-modal #confirm:hover {
     border-color: var(--confirm-hover-color);
     background: var(--confirm-hover-color);
+    color: white;
 }
 
 /* Toast Notification Styles */
