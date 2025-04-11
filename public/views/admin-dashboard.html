@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link rel="stylesheet" href="../styles/admin-dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="icon" type="image/svg+xml" href="../assets/logo/raze-dark-1.svg" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/svg+xml" href="../assets/logo/raze-light-1.svg" media="(prefers-color-scheme: dark)">
@@ -23,6 +23,13 @@
         </div>
         <button class="logout-button" id="logout-button"><i class="bi bi-box-arrow-right"></i>Log Out</button>
     </header>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div id="toast-content" class="toast-content">
+          <span id="toast-message"></span>
+        </div>
+    </div>
 
     <!-- Low Priority Scripts -->
     <script src="../scripts/interface/adminDashboard.js" defer></script>

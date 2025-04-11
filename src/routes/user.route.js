@@ -5,13 +5,16 @@ const { getUsers, deleteUser, getLeaderboard, getStatus } = require("../controll
 
 const router = express.Router();
 
+// ----- Auth ----- //
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 
+// ----- Admin ----- //
 router.get("/users", authMiddleware, getUsers);
 router.delete("/:id", authMiddleware, deleteUser);
 
+// ----- User ----- //
 router.get("/leaderboard", authMiddleware, getLeaderboard);
 router.get("/", authMiddleware, getStatus);
 

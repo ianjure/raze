@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = require("../models/user.model");
 const Task = require("../models/task.model");
 
-// ---- For Admins ---- //
+// ----- Admin ----- //
 
 const getUsers = async (req, res) => {
     // Get the admin ID from the authenticated user
@@ -80,7 +80,7 @@ const deleteUser = async (req, res) => {
     }
 };
 
-// ---- For Users ---- //
+// ----- Users ----- //
 
 const getLeaderboard = async (req, res) => {
     // Get the user ID from the authenticated user

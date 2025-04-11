@@ -4,6 +4,39 @@ const User = require("../models/user.model");
 const calculateExp = require("../utils/calculateExp");
 const updateLevel = require("../utils/updateLevel");
 
+// ----- Admin ----- //
+
+const getAllTasks = async (req, res) => {
+    // Get the admin ID from the authenticated user
+    const adminId = req.user.id;
+
+    // Check if the admin ID is provided
+    if (!adminId) {
+        return res.status(401).json({ success: false, message: "Admin ID is required." });
+    }
+
+    // Check if the admin ID is valid
+    if(!mongoose.Types.ObjectId.isValid(adminId)) {
+        return res.status(404).json({ success: false, message: "Invalid admin ID." });
+    }
+
+    // Check if the admin exists
+    const existingAdmin = await User.findOne({ _id: adminId, role: "Admin" });
+    if (!existingAdmin) {
+        return res.status(500).json({ success: false, message: "Admin not found." });
+    }
+
+    try {
+        // Find all tasks in the database and select only the status field
+        const tasks = await Task.find({}).select(["status"]);
+        return res.status(200).json({ success: true, data: tasks });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+// ----- User ----- //
+
 const getTasks = async (req, res) => {
     // Get the user ID from the authenticated user
     const userId = req.user.id;
@@ -185,4 +218,4 @@ const deleteTask = async (req, res) => {
     }
 };
 
-module.exports = { getTasks, createTask, updateTask, deleteTask };
+module.exports = { getAllTasks, getTasks, createTask, updateTask, deleteTask };
