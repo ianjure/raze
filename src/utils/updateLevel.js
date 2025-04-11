@@ -9,6 +9,8 @@ function updateLevel(currentExp, expToAdd) {
         levelIncrease = 1;
     }
 
+    newExp = Math.floor(newExp); // Ensure EXP is an integer
+
     return { newExp, levelIncrease };
 }
 

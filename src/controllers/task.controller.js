@@ -110,20 +110,30 @@ const updateTask = async (req, res) => {
     }
 
     try {
-        // Check if the task is already marked as done, then update the task while keeping the status as done
+        // If the task is already "Done", do not allow status changes
         if (existingTask.status === "Done") {
-            status = "Done";
-            const updatedTask = await Task.findOneAndUpdate({ _id: taskId, user: userId }, { $set: { task, status } }, { new: true, runValidators: true });
-            return res.status(200).json({ success: true, data: updatedTask });
+            return res.status(400).json({ success: false, message: "Task is already marked as 'Done' and cannot be changed." });
+        }
 
-        // If the task is not marked as done, update the task and the user
-        } else {
+        // If the new status is "Done" and the current status is not "Done", update the user's exp and level
+        if (status === "Done" && existingTask.status !== "Done") {
             const expAdd = calculateExp(existingUser.level);
             const { newExp, levelIncrease } = updateLevel(existingUser.exp, expAdd);
-            const updatedUser = await User.findOneAndUpdate({ _id: userId }, { $set: { exp: newExp }, $inc: { level: levelIncrease } }, { new: true });
-            const updatedTask = await Task.findOneAndUpdate({ _id: taskId, user: userId }, { $set: { task, status } }, { new: true, runValidators: true });
-            return res.status(200).json({ success: true, data: updatedTask });
+            await User.findOneAndUpdate(
+                { _id: userId },
+                { $set: { exp: newExp }, $inc: { level: levelIncrease } },
+                { new: true }
+            );
         }
+
+        // Update the task with the new task and status
+        const updatedTask = await Task.findOneAndUpdate(
+            { _id: taskId, user: userId },
+            { $set: { task, status } },
+            { new: true, runValidators: true }
+        );
+
+        return res.status(200).json({ success: true, data: updatedTask });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
     }
@@ -168,7 +178,7 @@ const deleteTask = async (req, res) => {
   
     try {
         // Find the task by ID and user, then delete it
-        const deletedTask = await Task.findOneAndDelete({ _id: taskId, user: userId });
+        await Task.findOneAndDelete({ _id: taskId, user: userId });
         return res.status(200).json({ success: true, message: "Task deleted successfully!" });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });

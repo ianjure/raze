@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", data.role);
+                    localStorage.setItem("level", data.level);
                     
                     // Redirect based on role
                     if (data.role === "Admin") {
@@ -115,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("username");
                     localStorage.removeItem("role");
+                    localStorage.removeItem("level");
                     window.location.replace("/login");
                 } else {
                     showToast(data.message, "error");

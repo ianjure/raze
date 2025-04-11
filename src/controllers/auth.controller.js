@@ -64,7 +64,7 @@ const login = async (req, res) => {
         // If the password is correct, generate a token and send it to the user
         else {
             const token = generateToken(existingUser._id, existingUser.role );
-            return res.status(200).json({ success: true, message: "Logged-in successfully!", token: token, role: existingUser.role });
+            return res.status(200).json({ success: true, message: "Logged-in successfully!", token: token, role: existingUser.role, level: existingUser.level });
         }
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });

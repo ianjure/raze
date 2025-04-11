@@ -12,7 +12,7 @@ router.post("/logout", logout);
 router.get("/users", authMiddleware, getUsers);
 router.delete("/:id", authMiddleware, deleteUser);
 
-router.get('/leaderboard', authMiddleware, getLeaderboard);
-router.get('/', authMiddleware, getStatus);
+router.get("/leaderboard", authMiddleware, getLeaderboard);
+router.get("/", authMiddleware, getStatus);
 
 module.exports = router;

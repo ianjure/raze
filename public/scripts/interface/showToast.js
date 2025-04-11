@@ -1,3 +1,4 @@
+// Function to display a toast notification
 function showToast(message, type, duration = 4000) {
     const toast = document.getElementById("toast");
     const toastContent = document.getElementById("toast-content");
@@ -13,9 +14,10 @@ function showToast(message, type, duration = 4000) {
     }, duration);
 }
 
+// Make the showToast function available globally
 window.showToast = showToast;
 
-// Show toast after successful sign up
+// Show toast when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     const toastMessage = localStorage.getItem("toastMessage");
     const toastType = localStorage.getItem("toastType");
