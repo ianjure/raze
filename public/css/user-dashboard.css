@@ -287,6 +287,10 @@ header {
 .confirm-modal #cancel {
     border-color: var(--cancel-color);
 }
+.confirm-modal #cancel:hover {
+    border-color: var(--cancel-color);
+    cursor: pointer;
+}
 .confirm-modal #confirm {
     border-color: var(--confirm-color);
     background: var(--confirm-color);
@@ -296,6 +300,7 @@ header {
     border-color: var(--confirm-hover-color);
     background: var(--confirm-hover-color);
     color: white;
+    cursor: pointer;
 }
 
 /* Toast Notification Styles */
