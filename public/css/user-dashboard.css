@@ -8,6 +8,7 @@
     --secondary-color: #cbd5e1;
     --task-color: #f6f6f6;
     --cancel-color: #e5e7eb;
+    --cancel-hover-color: #cbced4;
     --confirm-color: #dc2626;
     --confirm-hover-color: #631010;
     --task-size: 48px;
@@ -286,9 +287,11 @@ header {
 }
 #cancel {
     border-color: var(--cancel-color);
+    background: var(--cancel-color);
 }
 #cancel:hover {
-    border-color: var(--cancel-color);
+    border-color: var(--cancel-hover-color);
+    background: var(--cancel-hover-color);
     cursor: pointer;
 }
 #confirm {
