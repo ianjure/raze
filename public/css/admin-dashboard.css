@@ -1,5 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
+
+:root {
+    --header-color: #d6dce4;
+    --bg-color: #e2e8f0;
+    --text-color: #404040;
+    --primary-color: #475569;
+    --secondary-color: #cbd5e1;
+    --task-color: #f6f6f6;
+    --cancel-color: #e5e7eb;
+    --confirm-color: #dc2626;
+    --confirm-hover-color: #b91c1c;
+    --task-size: 48px;
+}
+
 /* CSS Reset */
 * {
+    font-family: Mulish, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
