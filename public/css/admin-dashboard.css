@@ -23,22 +23,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
-span {
-    color: #404040;
-}
 .username {
     font-size: 18px;
     font-weight: bold;
 }
 .logout-button {
-    background-color: #ff4b4b;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
 }
+.logout-button i {
+    margin-right: 10px;
+}
 .logout-button:hover {
-    background-color: #ff1c1c;
+    background-color: var(--text-color);
 }
