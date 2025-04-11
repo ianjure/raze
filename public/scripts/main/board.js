@@ -88,6 +88,7 @@ const handleDrop = async (event) => {
             if (newStatus === "Done") {
                 draggedTask.draggable = false;
                 draggedTask.style.cursor = "not-allowed";
+                draggedTask.style.boxShadow = "none";
 
                 // Remove the update button but keep the delete button
                 const editButton = draggedTask.querySelector("button[data-edit]");
@@ -173,6 +174,7 @@ const loadTasks = async () => {
                 if (taskData.status === "Done") {
                     taskElement.draggable = false;
                     taskElement.style.cursor = "not-allowed";
+                    taskElement.style.boxShadow = "none";
 
                     // Remove the update button but keep the delete button
                     const editButton = taskElement.querySelector("button[data-edit]");
