@@ -290,7 +290,6 @@ header {
 .confirm-modal button#confirm {
     border-color: var(--confirm-color);
     background: var(--confirm-color);
-    color: #fff;
 }
 .confirm-modal button#confirm:hover {
     border-color: var(--confirm-hover-color);
