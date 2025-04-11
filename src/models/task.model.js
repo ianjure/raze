@@ -10,7 +10,7 @@ const taskSchema = mongoose.Schema({
     task: {
         type: String,
         required: true,
-        maxlength: 100
+        maxlength: 500
     },
     status: {
         type: String,

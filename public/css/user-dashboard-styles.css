@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
 
 :root {
+    --header-color: #d6dce4;
     --bg-color: #e2e8f0;
     --text-color: #404040;
     --primary-color: #475569;
@@ -36,21 +37,40 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: white;
+    background-color: var(--bg-color);
     color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid var(--secondary-color);
     z-index: 1000;
 }
 .profile {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
-.profile img {
+.exp-circle {
+    position: relative;
     width: 45px;
     height: 45px;
+}
+.progress-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #4caf50 calc(var(--progress) * 1%), 
+        #ffffff 0
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progress-circle img {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--bg-color);
 }
 .user-info {
     display: flex;
@@ -67,16 +87,19 @@ header {
     color: #666;
 }
 .logout-button {
-    background-color: var(--confirm-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
 }
+.logout-button i {
+    margin-right: 10px;
+}
 .logout-button:hover {
-    background-color: var(--confirm-hover-color);
+    background-color: var(--text-color);
 }
 
 /* Kanban Board Styles */

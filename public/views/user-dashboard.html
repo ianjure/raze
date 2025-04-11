@@ -21,13 +21,17 @@
     <!-- Menu Header -->
     <header>
         <div class="profile">
-            <img id="profile-picture" src="../assets/profile/default-profile.png" alt="Profile Picture">
+            <div class="exp-circle">
+                <div class="progress-circle">
+                    <img id="profile-picture" alt="Profile Picture">
+                </div>
+            </div>
             <div class="user-info">
                 <div class="username"><span id="username"></span></div>
                 <div class="details"><span id="level"></span> <span id="exp"></span></div>
             </div>
         </div>
-        <button class="logout-button" id="logout-button">Logout</button>
+        <button class="logout-button" id="logout-button"><i class="bi bi-box-arrow-right"></i>Log Out</button>
     </header>
 
     <!-- Kanban Board -->
@@ -83,6 +87,7 @@
     <!-- Low Priority Scripts -->
     <script src="../scripts/interface/userDashboard.js" defer></script>
     <script src="../scripts/interface/showUserStatus.js" defer></script>
+    <script src="../scripts/interface/updateProgress.js" defer></script>
     <script src="../scripts/interface/updateFavicon.js" defer></script>
 </body>
 </html>
