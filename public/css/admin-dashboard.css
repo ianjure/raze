@@ -8,8 +8,9 @@
     --secondary-color: #cbd5e1;
     --task-color: #f6f6f6;
     --cancel-color: #e5e7eb;
+    --cancel-hover-color: #cbced4;
     --confirm-color: #dc2626;
-    --confirm-hover-color: #b91c1c;
+    --confirm-hover-color: #731717;
     --task-size: 48px;
 }
 
