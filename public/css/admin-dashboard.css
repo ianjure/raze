@@ -42,7 +42,7 @@ header {
 .username {
     font-weight: bold;
     font-size: 1rem;
-    color: #404040;
+    color: var(--text-color);
 }
 .logout-button {
     background-color: var(--primary-color);
