@@ -291,12 +291,12 @@ header {
     border-color: var(--cancel-color);
     cursor: pointer;
 }
-.confirm-modal #confirm {
+#confirm {
     border-color: var(--confirm-color);
     background: var(--confirm-color);
     color: white;
 }
-.confirm-modal #confirm:hover {
+#confirm:hover {
     border-color: var(--confirm-hover-color);
     background: var(--confirm-hover-color);
     color: white;
