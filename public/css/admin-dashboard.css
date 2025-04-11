@@ -40,8 +40,9 @@ header {
     z-index: 1000;
 }
 .username {
-    font-size: 18px;
     font-weight: bold;
+    font-size: 1rem;
+    color: #404040;
 }
 .logout-button {
     background-color: var(--primary-color);
