@@ -9,7 +9,7 @@
     --task-color: #f6f6f6;
     --cancel-color: #e5e7eb;
     --confirm-color: #dc2626;
-    --confirm-hover-color: #b91c1c;
+    --confirm-hover-color: #631010;
     --task-size: 48px;
 }
 
@@ -284,10 +284,10 @@ header {
     border: 1px solid transparent;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
-.confirm-modal #cancel {
+#cancel {
     border-color: var(--cancel-color);
 }
-.confirm-modal #cancel:hover {
+#cancel:hover {
     border-color: var(--cancel-color);
     cursor: pointer;
 }
