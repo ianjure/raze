@@ -173,7 +173,7 @@ const loadTasks = async () => {
                 // If the task is in the "Done" column, apply the necessary changes
                 if (taskData.status === "Done") {
                     taskElement.draggable = false;
-                    taskElement.style.cursor = "not-allowed";
+                    taskElement.style.cursor = "default";
                     taskElement.style.boxShadow = "none";
 
                     // Remove the update button but keep the delete button
