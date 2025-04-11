@@ -1,5 +1,6 @@
 // Select elements and get the token from the local storage
 const modal = document.querySelector(".confirm-modal");
+const modalAll = document.querySelector(".all-confirm-modal");
 const columnsContainer = document.querySelector(".columns");
 const columns = columnsContainer.querySelectorAll(".column");
 const token = localStorage.getItem("token");
@@ -17,6 +18,7 @@ const handleDragStart = (event) => {
     event.dataTransfer.setData("text/plain", event.target.id);
     requestAnimationFrame(() => event.target.classList.add("dragging"));
 };
+
 // Function to handle drag over event
 const handleDragOver = (event) => {
     // Prevent default behavior to allow drop
@@ -51,6 +53,7 @@ const handleDragOver = (event) => {
         }
     }
 };
+
 // Function to handle drop event
 const handleDrop = async (event) => {
     event.preventDefault();
@@ -107,6 +110,7 @@ const handleDrop = async (event) => {
         console.log(error);
     }
 };
+
 // Function to handle drag end event
 const handleDragEnd = (event) => {
     event.target.classList.remove("dragging");
@@ -131,6 +135,7 @@ const createTask = (id, content) => {
     task.addEventListener("dragend", handleDragEnd);
     return task;
 };
+
 // Function to create a task input element
 const createTaskInput = (text = "") => {
     const input = document.createElement("div");
@@ -193,12 +198,14 @@ const loadTasks = async () => {
         console.log(error);
     }
 };
+
 // Function to update task count in each column
 const updateTaskCount = (column) => {
     const tasks = column.querySelector(".tasks").children;
     const taskCount = tasks.length;
     column.querySelector(".column-title h3").dataset.tasks = taskCount;
 };
+
 // Function to observe changes in task count
 const observeTaskChanges = () => {
     for (const column of columns) {
@@ -206,6 +213,7 @@ const observeTaskChanges = () => {
         observer.observe(column.querySelector(".tasks"), { childList: true });
     }
 };
+
 // Call function to load tasks on page load and observe changes
 loadTasks();
 observeTaskChanges();
@@ -221,6 +229,7 @@ const handleAdd = async (event) => {
     tasksEl.appendChild(input);
     input.focus();
 };
+
 // Function to handle editing a task
 const handleEdit = (event) => {
     // Get the task element to be edited
@@ -238,10 +247,7 @@ const handleEdit = (event) => {
     selection.selectAllChildren(input);
     selection.collapseToEnd();
 };
-// Function to handle deleting all tasks in 'Done' column
-const handleDeleteAll = (event) => {
-    // CODE HERE
-};
+
 // Function to handle deleting a task
 const handleDelete = (event) => {
     // Get the task element to be deleted
@@ -252,6 +258,12 @@ const handleDelete = (event) => {
     modal.querySelector(".preview").innerText = taskText.length > 20 ? taskText.substring(0, 20) + "..." : taskText;
     modal.showModal();
 };
+
+// Function to handle deleting all tasks in 'Done' column
+const handleDeleteAll = (event) => {
+    modalAll.showModal();
+};
+
 // Function to handle task input blur event
 const handleBlur = async (event) => {
     // Get the task input element and its content
@@ -322,18 +334,18 @@ tasksElements = columnsContainer.querySelectorAll(".tasks");
         tasksEl.addEventListener("dragover", handleDragOver);
         tasksEl.addEventListener("drop", handleDrop);
 }
+
 // Add task action event listeners to each column
 columnsContainer.addEventListener("click", (event) => {
     if (event.target.closest("button[data-add]")) {
         handleAdd(event);
-    } else if (event.target.closest("button[data-delete]")) {
-        handleDeleteAll(event);
     } else if (event.target.closest("button[data-edit]")) {
         handleEdit(event);
     } else if (event.target.closest("button[data-delete]")) {
         handleDelete(event);
     }
 });
+
 // Add task deletion event listener to the modal for confirmation
 modal.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -355,8 +367,6 @@ modal.addEventListener("submit", async (event) => {
         // If successful, remove the task element from the DOM and show a success message
         if (response.ok) {
             currentTask.remove()
-            showToast("✔️ Task deleted successfully!", "success");
-            modal.close();
             currentTask = null;
         } else {
             console.log("Error: Failed to delete task.")
@@ -364,11 +374,67 @@ modal.addEventListener("submit", async (event) => {
     } catch (error) {
         console.log(error);
     }
+    
+    // Show a success message
+    showToast("✔️ Task deleted successfully!", "success");
+
+    // Close the modal
+    modal.close();
 });
+
 // Add event listener to the cancel button in the modal
 modal.querySelector("#cancel").addEventListener("click", () => {
     modal.close()
     currentTask = null;
 });
+
 // Add event listener to close the modal when the close button is clicked
 modal.addEventListener("close", () => (currentTask = null));
+
+// Add event listener for the delete button in the 'Done' column
+document.querySelector(".column-title.done button[data-delete]").addEventListener("click", handleDeleteAll);
+
+// Add task deletion event listener to the modal for confirmation of all tasks
+modalAll.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    // Find the 'Done' column
+    const doneColumn = document.querySelector('.column[data-status="Done"]');
+    if (!doneColumn) return console.error("Error: 'Done' column not found.");
+
+    // Get all tasks in the 'Done' column
+    const tasksContainer = doneColumn.querySelector(".tasks");
+    const tasks = tasksContainer.querySelectorAll(".task");
+
+    // Iterate over each task and delete it
+    for (const task of tasks) {
+        const taskId = task.id.replace("task-", "");
+        try {
+            const response = await fetch(`/api/task/${taskId}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                task.remove(); // Remove the task from the DOM
+            } else {
+                console.log(`Error: Failed to delete task with ID ${taskId}.`);
+            }
+        } catch (error) {
+            console.log(`Error: Failed to delete task with ID ${taskId}.`, error);
+        }
+    }
+
+    // Show a success message
+    showToast("✔️ Tasks deleted successfully!", "success");
+
+    // Close the modal
+    modalAll.close();
+});
+
+// Add event listener to the cancel button in the modal
+modalAll.querySelector("#cancel").addEventListener("click", () => {
+    modalAll.close()
+});
