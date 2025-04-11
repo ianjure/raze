@@ -71,7 +71,7 @@ header {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--bg-color);
+    border: 3px solid var(--bg-color);
 }
 .user-info {
     display: flex;
@@ -154,7 +154,7 @@ header {
     border-radius: 0.25rem;
     padding: 0 0.25rem;
 }
-.column-title.todo h3::after {
+.column-title.to-do h3::after {
     background: lightblue;
 }
 .column-title.priority h3::after {
@@ -166,7 +166,11 @@ header {
 .column-title.done h3::after {
     background: lightgreen;
 }
-.column-title button {
+.column-title.to-do button {
+    margin-left: auto;
+    font-size: 2rem;
+}
+.column-title.done button {
     margin-left: auto;
     font-size: 2rem;
 }

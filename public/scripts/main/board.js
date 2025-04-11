@@ -238,6 +238,10 @@ const handleEdit = (event) => {
     selection.selectAllChildren(input);
     selection.collapseToEnd();
 };
+// Function to handle deleting all tasks in 'Done' column
+const handleDeleteAll = (event) => {
+    // CODE HERE
+};
 // Function to handle deleting a task
 const handleDelete = (event) => {
     // Get the task element to be deleted
@@ -322,6 +326,8 @@ tasksElements = columnsContainer.querySelectorAll(".tasks");
 columnsContainer.addEventListener("click", (event) => {
     if (event.target.closest("button[data-add]")) {
         handleAdd(event);
+    } else if (event.target.closest("button[data-delete]")) {
+        handleDeleteAll(event);
     } else if (event.target.closest("button[data-edit]")) {
         handleEdit(event);
     } else if (event.target.closest("button[data-delete]")) {
