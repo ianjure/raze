@@ -206,10 +206,29 @@ const updateTaskCount = (column) => {
     column.querySelector(".column-title h3").dataset.tasks = taskCount;
 };
 
+// Function to toggle the visibility of the 'Delete All' button in the 'Done' column
+const toggleDeleteAllButton = () => {
+    const doneColumn = document.querySelector('.column[data-status="Done"]');
+    const deleteAllButton = doneColumn.querySelector("button[data-delete]");
+    const tasksContainer = doneColumn.querySelector(".tasks");
+    const taskCount = tasksContainer.children.length;
+
+    // Show the button if there are tasks, hide it otherwise
+    deleteAllButton.style.display = taskCount > 0 ? "block" : "none";
+};
+
+// Call toggleDeleteAllButton initially to set the correct state
+toggleDeleteAllButton();
+
 // Function to observe changes in task count
 const observeTaskChanges = () => {
     for (const column of columns) {
-        const observer = new MutationObserver(() => updateTaskCount(column));
+        const observer = new MutationObserver(() => {
+            updateTaskCount(column);
+            if (column.dataset.status === "Done") {
+                toggleDeleteAllButton();
+            }
+        });
         observer.observe(column.querySelector(".tasks"), { childList: true });
     }
 };
