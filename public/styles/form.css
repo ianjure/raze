@@ -23,7 +23,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    height: 100vh;
     overflow: hidden;
     background-image: url("../assets/misc/bg-pattern.jpg");
     background-size: 300px;
@@ -37,7 +36,8 @@ body {
 /* Logo Styles */
 .logo {
     width: 12rem;
-    margin: 10px auto;
+    margin-top: -2rem;
+    margin-bottom: 10px;
 }
 
 /* Slogan Styles */
