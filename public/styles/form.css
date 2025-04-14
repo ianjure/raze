@@ -22,6 +22,11 @@ body {
     background-color: var(--bg-color);
 }
 
+/* Logo Styles */
+#logo {
+    width: 3rem;
+}
+
 /* Form Styles */
 .container {
     width: 100%;
