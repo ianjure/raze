@@ -84,7 +84,7 @@ header {
 }
 .details {
     font-size: 0.9rem;
-    color: #666;
+    color: #666666;
 }
 .logout-button {
     background-color: var(--primary-color);
