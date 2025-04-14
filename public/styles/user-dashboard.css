@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
 
 :root {
-    --bg-color: #fbfbfb;
+    --bg-color: #FBFBFB;
     --text-color: #404040;
-    --task-color: #f6f6f6;
+    --task-color: #F6F6F6;
     --primary-color: #475569;
-    --secondary-color: #cbd5e1;
-    --primary-button-color: #ea4235;
-    --primary-button-hover-color: #c62222;
-    --secondary-button-color: #e5e7eb;
-    --secondary-button-hover-color: #d5d7db;
+    --secondary-color: #CBD5E1;
+    --primary-button-color: #EA4235;
+    --primary-button-hover-color: #922820;
+    --secondary-button-color: #E5E7EB;
+    --secondary-button-hover-color: #D5D7DB;
     --task-size: 48px;
 }
 
@@ -149,22 +149,23 @@ header {
     text-transform: uppercase;
 }
 .column-title h3::after {
+    color: white;
     content: attr(data-tasks);
     margin-left: 0.75rem;
     border-radius: 0.25rem;
     padding: 0 0.25rem;
 }
 .column-title.to-do h3::after {
-    background: lightblue;
+    background: #3F85F4;
 }
 .column-title.priority h3::after {
-    background: lightpink;
+    background: #EA4235;
 }
 .column-title.in-progress h3::after {
-    background: #E9D787;
+    background: #FCBC05;
 }
 .column-title.done h3::after {
-    background: lightgreen;
+    background: #33A953;
 }
 .column-title.to-do button {
     margin-left: auto;
