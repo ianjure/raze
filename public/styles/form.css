@@ -2,6 +2,9 @@
 
 :root {
     --bg-color: #fbfbfb;
+    --primary-color: #dbdbdb;
+    --primary-button-color: #3F85F4;
+    --primary-button-hover-color: #475569;
 }
 
 /* CSS Reset */
@@ -12,37 +15,58 @@
     box-sizing: border-box;
 }
 
+/* Page Styles */
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--bg-color);
+    background-image: url("../assets/misc/bg-pattern.jpg");
+    background-size: 300px;
+    animation: animate-bg 10s linear infinite;
+}
+@keyframes animate-bg {
+    from { background-position: 0 0;}
+    to {background-position: 300px 300px;}
 }
 
 /* Logo Styles */
-#logo {
-    width: 3rem;
+.logo {
+    width: 10rem;
+    margin: 10px auto;
 }
+
+/* Slogan Styles */
+.slogan {
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    color: #404040;
+    word-spacing: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}  
 
 /* Form Styles */
 .container {
     width: 100%;
     max-width: 400px;
-    margin: 50px auto;
+    margin: 10px auto;
     padding: 20px;
     text-align: center;
     background-color: #f9f9f9;
     border-radius: 10px;
+    border: 1px solid var(--primary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     display: block;
     box-sizing: border-box;
@@ -50,7 +74,7 @@ input {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: var(--primary-button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -58,10 +82,23 @@ button {
     display: block;
 }
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-button-hover-color);
+}
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
 }
 p {
     margin-top: 15px;
+}
+.link {
+    color: var(--primary-button-color);
+    text-decoration: none;
+}
+.link:hover {
+    color: var(--primary-button-hover-color);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Toast Notification Styles */
