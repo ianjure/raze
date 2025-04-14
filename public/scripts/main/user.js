@@ -213,7 +213,7 @@ const toggleDeleteAllButton = () => {
     const tasksContainer = doneColumn.querySelector(".tasks");
     const taskCount = tasksContainer.children.length;
 
-    // Show the button if there are tasks, hide it otherwise
+    // Show the button if there are more than 1 task, hide it otherwise
     deleteAllButton.style.display = taskCount > 1 ? "block" : "none";
 };
 
