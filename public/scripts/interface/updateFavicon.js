@@ -1,7 +1,7 @@
 // Function to update the favicon based on the system theme
 function updateFavicon() {
     const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const faviconHref = darkMode ? "../assets/logo/raze-light-1.svg" : "../assets/logo/raze-dark-1.svg";
+    const faviconHref = darkMode ? "../assets/logo/raze-light-icon.svg" : "../assets/logo/raze-dark-icon.svg";
 
     // Remove existing favicon(s)
     document.querySelectorAll("link[rel='icon']").forEach(el => el.remove());
