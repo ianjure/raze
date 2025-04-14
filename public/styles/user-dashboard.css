@@ -3,13 +3,13 @@
 :root {
     --bg-color: #fbfbfb;
     --text-color: #404040;
+    --task-color: #f6f6f6;
     --primary-color: #475569;
     --secondary-color: #cbd5e1;
-    --task-color: #f6f6f6;
-    --cancel-color: #e5e7eb;
-    --cancel-hover-color: #d5d7db;
-    --confirm-color: #dc2626;
-    --confirm-hover-color: #c62222;
+    --primary-button-color: #ea4235;
+    --primary-button-hover-color: #c62222;
+    --secondary-button-color: #e5e7eb;
+    --secondary-button-hover-color: #d5d7db;
     --task-size: 48px;
 }
 
@@ -21,6 +21,7 @@
     box-sizing: border-box;
 }
 
+/* Page Styles */
 body {
     background: var(--bg-color);
     margin: 0;
@@ -84,10 +85,10 @@ header {
 }
 .details {
     font-size: 0.9rem;
-    color: #666666;
+    color: var(--primary-color);
 }
 .logout-button {
-    background-color: var(--primary-color);
+    background-color: var(--primary-button-color);
     color: white;
     border: none;
     padding: 8px 16px;
@@ -99,7 +100,7 @@ header {
     margin-right: 10px;
 }
 .logout-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--primary-button-hover-color);
 }
 
 /* Kanban Board Styles */
@@ -223,6 +224,7 @@ header {
     outline: none;
     overflow-wrap: anywhere;
     padding-left: 2.5rem;
+    border: 1px solid var(--secondary-color)
 }
 .task-input::before {
     content: "\F392";
@@ -302,22 +304,18 @@ header {
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 .confirm-modal button#cancel {
-    border-color: var(--cancel-color);
-    background: var(--cancel-color);
+    background: var(--secondary-button-color);
 }
 .confirm-modal button#cancel:hover {
-    border-color: var(--cancel-hover-color);
-    background: var(--cancel-hover-color);
+    background: var(--secondary-button-hover-color);
     cursor: pointer;
 }
 .confirm-modal button#confirm {
-    border-color: var(--confirm-color);
-    background: var(--confirm-color);
+    background: var(--primary-button-color);
     color: white;
 }
 .confirm-modal button#confirm:hover {
-    border-color: var(--confirm-hover-color);
-    background: var(--confirm-hover-color);
+    background: var(--primary-button-hover-color);
     color: white;
     cursor: pointer;
 }
@@ -384,22 +382,18 @@ header {
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 .all-confirm-modal button#cancel {
-    border-color: var(--cancel-color);
-    background: var(--cancel-color);
+    background: var(--secondary-button-color);
 }
 .all-confirm-modal button#cancel:hover {
-    border-color: var(--cancel-hover-color);
-    background: var(--cancel-hover-color);
+    background: var(--secondary-button-hover-color);
     cursor: pointer;
 }
 .all-confirm-modal button#confirm {
-    border-color: var(--confirm-color);
-    background: var(--confirm-color);
+    background: var(--primary-button-color);
     color: white;
 }
 .all-confirm-modal button#confirm:hover {
-    border-color: var(--confirm-hover-color);
-    background: var(--confirm-hover-color);
+    background: var(--primary-button-hover-color);
     color: white;
     cursor: pointer;
 }
@@ -426,6 +420,7 @@ header {
     font-size: 0.9rem;
     font-weight: 500;
     text-align: center;
+    border: 1px solid var(--secondary-color);
 }
 .toast-content.success {
     background-color: #ffffff !important;
