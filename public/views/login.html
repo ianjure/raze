@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Raze</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles/form.css">
-    <link rel="icon" type="image/svg+xml" href="../assets/logo/raze-dark-1.svg" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/svg+xml" href="../assets/logo/raze-light-1.svg" media="(prefers-color-scheme: dark)">
 
     <!-- High Priority Scripts -->
     <script src="../scripts/security/redirect.js" defer></script>
@@ -16,7 +16,10 @@
 
 <body>
     <!-- Logo -->
-    <img id="logo" src="../assets/logo/raze-dark-2.svg">
+    <img class="logo" src="../assets/logo/raze-original.svg">
+
+    <!-- Slogan -->
+    <h4 class="slogan">🏁 Compete. ✅ Complete. 🏆 Dominate.</h4>
     
     <!-- Login Form -->
     <div class="container">
@@ -26,7 +29,7 @@
             <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="/signup">SignUp</a></p>
+        <p>Don't have an account? <a class="link" href="/signup">SignUp</a></p>
     </div>
 
     <!-- Toast Notification -->
