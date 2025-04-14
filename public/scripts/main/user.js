@@ -214,7 +214,7 @@ const toggleDeleteAllButton = () => {
     const taskCount = tasksContainer.children.length;
 
     // Show the button if there are tasks, hide it otherwise
-    deleteAllButton.style.display = taskCount > 0 ? "block" : "none";
+    deleteAllButton.style.display = taskCount > 1 ? "block" : "none";
 };
 
 // Call toggleDeleteAllButton initially to set the correct state
