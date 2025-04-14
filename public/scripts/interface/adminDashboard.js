@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
 
+    const profilePictures = {
+        "ian": "../assets/admin/admin1.jpg",
+        "rusz": "../assets/admin/admin2.png",
+        "honey": "../assets/admin/admin3.png",
+        "joanna": "../assets/admin/admin4.png",
+        "airyll": "../assets/admin/admin5.png"
+    };
+
+    // Set the profile picture based on the username
+    const user = username.toLowerCase();
+    const profilePicture = document.getElementById("profile-picture");
+    if (profilePictures[user]) {
+        profilePicture.src = profilePictures[user];
+    }
+
     // If any essential data is missing, redirect to login
     if (!token || !username || !role) {
         window.location.replace("/login");
