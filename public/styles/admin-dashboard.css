@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
 
 :root {
-    --header-color: #d6dce4;
     --bg-color: #fbfbfb;
     --text-color: #404040;
     --primary-color: #475569;
@@ -50,7 +49,7 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid #d6dce4;
     object-fit: cover;
 }
 .user-info {
