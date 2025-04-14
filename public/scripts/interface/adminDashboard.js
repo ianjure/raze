@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const profilePictures = {
         "ian": "../assets/admin/admin1.jpg",
-        "rusz": "../assets/admin/admin2.png",
+        "ruszed": "../assets/admin/admin2.png",
         "honey": "../assets/admin/admin3.png",
         "joanna": "../assets/admin/admin4.png",
         "airyll": "../assets/admin/admin5.png"
