@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
 
 :root {
-    --header-color: #d6dce4;
     --bg-color: #fbfbfb;
     --text-color: #404040;
     --primary-color: #475569;
@@ -186,6 +185,7 @@ header {
 .tasks > * {
     background: #fff;
     border-radius: 0.25rem;
+    border: 1px solid var(--secondary-color)
     padding: 0.875rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
