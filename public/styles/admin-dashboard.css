@@ -3,13 +3,13 @@
 :root {
     --bg-color: #fbfbfb;
     --text-color: #404040;
+    --task-color: #f6f6f6;
     --primary-color: #475569;
     --secondary-color: #cbd5e1;
-    --task-color: #f6f6f6;
-    --cancel-color: #e5e7eb;
-    --cancel-hover-color: #d5d7db;
-    --confirm-color: #dc2626;
-    --confirm-hover-color: #c62222;
+    --primary-button-color: #ea4235;
+    --primary-button-hover-color: #c62222;
+    --secondary-button-color: #e5e7eb;
+    --secondary-button-hover-color: #d5d7db;
     --task-size: 48px;
 }
 
@@ -21,6 +21,7 @@
     box-sizing: border-box;
 }
 
+/* Page Styles */
 body {
     background: var(--bg-color);
     margin: 0;
@@ -67,7 +68,7 @@ header {
     color: #666666;
 }
 .logout-button {
-    background-color: var(--primary-color);
+    background-color: var(--primary-button-color);
     color: white;
     border: none;
     padding: 8px 16px;
@@ -79,7 +80,7 @@ header {
     margin-right: 10px;
 }
 .logout-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--primary-button-hover-color);
 }
 
 /* Toast Notification Styles */
