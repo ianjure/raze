@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const profilePictures = {
         "ian": "../assets/admin/admin1.jpg",
-        "ruszed": "../assets/admin/admin2.png",
-        "honey": "../assets/admin/admin3.png",
-        "joanna": "../assets/admin/admin4.png",
-        "airyll": "../assets/admin/admin5.png"
+        "ruszed": "../assets/admin/admin2.jpg",
+        "honey": "../assets/admin/admin3.jpg",
+        "joanna": "../assets/admin/admin4.jpg",
+        "airyll": "../assets/admin/admin5.jpg"
     };
 
     // Set the profile picture based on the username
