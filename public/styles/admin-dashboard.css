@@ -49,17 +49,17 @@ header {
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    border: 2px solid #666666;
+    border: 1px solid #666666;
     object-fit: cover;
 }
 .user-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
 }
 .username {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-color);
 }
 .details {
