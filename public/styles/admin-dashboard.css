@@ -46,10 +46,10 @@ header {
     gap: 15px;
 }
 .profile img {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    border-bottom: 2px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     object-fit: cover;
 }
 .user-info {
@@ -59,7 +59,7 @@ header {
 }
 .username {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--text-color);
 }
 .details {
