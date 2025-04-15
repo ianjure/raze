@@ -92,7 +92,7 @@ header {
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 14px;
 }
@@ -186,7 +186,7 @@ header {
 }
 .tasks > * {
     background: #fff;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     padding: 0.875rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -252,7 +252,7 @@ header {
     left: 50%;
     top: 50%;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s allow-discrete;
 }
@@ -300,7 +300,7 @@ header {
     opacity: 1;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     border: 1px solid transparent;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
@@ -330,7 +330,7 @@ header {
     left: 50%;
     top: 50%;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s allow-discrete;
 }
@@ -378,7 +378,7 @@ header {
     opacity: 1;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     border: 1px solid transparent;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
@@ -416,7 +416,7 @@ header {
 }
 .toast-content {
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     font-size: 0.9rem;
     font-weight: 500;

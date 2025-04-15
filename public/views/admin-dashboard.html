@@ -29,6 +29,20 @@
         <button class="logout-button" id="logout-button"><i class="bi bi-box-arrow-right"></i>Log Out</button>
     </header>
 
+    <!-- Modal -->
+    <dialog class="confirm-modal">
+        <form method="dialog">
+            <h3>Delete User?</h3>
+            <p>You are about to delete this user:</p>
+            <div class="preview"></div>
+  
+            <menu>
+            <button type="button" id="cancel">Cancel</button>
+            <button type="submit" id="confirm">Delete</button>
+            </menu>
+        </form>
+    </dialog>
+
     <!-- Toast Notification -->
     <div id="toast" class="toast">
         <div id="toast-content" class="toast-content">

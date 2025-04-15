@@ -72,7 +72,7 @@ header {
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 14px;
 }
@@ -81,6 +81,86 @@ header {
 }
 .logout-button:hover {
     background-color: var(--primary-button-hover-color);
+}
+
+/* Modal Styles */
+.confirm-modal[open] {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+}
+.confirm-modal {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(50px);
+    left: 50%;
+    top: 50%;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s allow-discrete;
+}
+.confirm-modal[open]::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+}
+.confirm-modal::backdrop {
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.3s allow-discrete;
+}
+@starting-style {
+    .confirm-modal[open] {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(50px);
+    }
+
+    .confirm-modal[open]::backdrop {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+.confirm-modal form {
+    padding: 2rem;
+}
+.confirm-modal form > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+.confirm-modal h3 {
+    font-size: 1.5rem;
+}
+.confirm-modal div.preview {
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--secondary-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.75;
+}
+.confirm-modal menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.confirm-modal button {
+    opacity: 1;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.confirm-modal button#cancel {
+    background: var(--secondary-button-color);
+}
+.confirm-modal button#cancel:hover {
+    background: var(--secondary-button-hover-color);
+    cursor: pointer;
+}
+.confirm-modal button#confirm {
+    background: var(--primary-button-color);
+    color: white;
+}
+.confirm-modal button#confirm:hover {
+    background: var(--primary-button-hover-color);
+    color: white;
+    cursor: pointer;
 }
 
 /* Toast Notification Styles */
@@ -100,7 +180,7 @@ header {
 }
 .toast-content {
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     font-size: 0.9rem;
     font-weight: 500;
