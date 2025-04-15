@@ -1,3 +1,4 @@
+// Function to calculate the experience points (EXP) gained per task based on the user's level.
 function calculateExp(level) {
     // Ensure level is a positive integer
     if (level < 1) return 0;

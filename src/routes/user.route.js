@@ -1,14 +1,16 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/auth.middleware");
-const { signup, login, logout } = require("../controllers/auth.controller");
+const { signup, login, logout, validate } = require("../controllers/auth.controller");
 const { getUsers, deleteUser, getLeaderboard, getStatus } = require("../controllers/user.controller");
 
+// Initialize the router
 const router = express.Router();
 
-// ----- Auth ----- //
+// ----- Authentication ----- //
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
+router.get("/validate", validate);
 
 // ----- Admin ----- //
 router.get("/users", authMiddleware, getUsers);

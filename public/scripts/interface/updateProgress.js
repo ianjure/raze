@@ -5,9 +5,6 @@ function updateProgress(newProgress) {
     // Get the current progress value
     const currentProgress = parseFloat(getComputedStyle(progressCircle).getPropertyValue("--progress")) || 0;
 
-    console.log("Current Progress:", currentProgress);
-    console.log("New Progress:", newProgress);
-
     // Define the animation duration and start time
     const duration = 1000; // 1 second
     const startTime = performance.now();

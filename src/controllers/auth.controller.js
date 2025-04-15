@@ -96,4 +96,29 @@ const logout = async (req, res) => {
     }
 };
 
-module.exports = { signup, login, logout };
+const validate = async (req, res) => {
+    // Get the token from the header
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+
+    // Check if token is provided
+    if (!token) {
+        return res.status(401).json({ success: false, message: "No token provided." });
+    }
+
+    try {
+        // Verify the token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Check if the user exists
+        const existingUser = await User.findOne({ _id: decoded.id });
+        if (!existingUser) {
+            return res.status(404).json({ success: false, message: "User not found." });
+        }
+        return res.status(200).json({ success: true, message: "Token is valid." });
+    } catch (error) {
+        return res.status(401).json({ success: false, message: "Invalid or expired token." });
+    }
+};
+
+module.exports = { signup, login, logout, validate };
