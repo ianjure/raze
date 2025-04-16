@@ -116,6 +116,20 @@ p {
     cursor: pointer;
 }
 
+/* Footer Styles */
+footer {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 10px 0;
+}
+footer p {
+    color: #6C6C6C;
+}
+
 /* Toast Notification Styles */
 .toast {
     position: fixed;
@@ -141,7 +155,7 @@ p {
 }
 .toast-content.success {
     background-color: #ffffff !important;
-    color: black !important;
+    color: var(--text-color) !important;
 }
 .toast-content.error {
     background-color: #ef4444 !important;

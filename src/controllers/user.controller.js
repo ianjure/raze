@@ -133,7 +133,7 @@ const getStatus = async (req, res) => {
 
     try {
         // Return the user's status
-        return res.status(200).json({ success: true, exp: existingUser.exp, level: existingUser.level });
+        return res.status(200).json({ success: true, exp: existingUser.exp, level: existingUser.level, streak: existingUser.streak });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
     }

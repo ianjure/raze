@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 // Define the user schema
 const userSchema = mongoose.Schema({
+    role : {
+        type: String,
+        enum: ["User", "Admin"],
+        default: "User"
+    },
     username: {
         type: String,
         required: true
@@ -20,10 +25,14 @@ const userSchema = mongoose.Schema({
         required: true,
         default: 0
     },
-    role : {
-        type: String,
-        enum: ["User", "Admin"],
-        default: "User"
+    streak: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    lastTaskCompleted: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true

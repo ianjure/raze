@@ -87,6 +87,12 @@ header {
     font-size: 0.9rem;
     color: var(--primary-color);
 }
+.details span {
+    margin-right: 5px;
+}
+.details span:last-child {
+    margin-right: 0;
+}
 .logout-button {
     background-color: var(--primary-button-color);
     color: white;
@@ -425,7 +431,7 @@ header {
 }
 .toast-content.success {
     background-color: #ffffff !important;
-    color: black !important;
+    color: var(--text-color) !important;
 }
 .toast-content.error {
     background-color: #ef4444 !important;

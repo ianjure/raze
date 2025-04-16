@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Add the active class to the next slogan
         slogans[currentIndex].classList.add("active");
-
-        console.log("Switch!");
     };
 
     // Initialize the first slogan as active

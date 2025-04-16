@@ -188,7 +188,7 @@ header {
 }
 .toast-content.success {
     background-color: #ffffff !important;
-    color: black !important;
+    color: var(--text-color) !important;
 }
 .toast-content.error {
     background-color: #ef4444 !important;

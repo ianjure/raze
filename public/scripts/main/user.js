@@ -209,7 +209,7 @@ const updateTaskCount = (column) => {
 // Function to toggle the visibility of the 'Delete All' button in the 'Done' column
 const toggleDeleteAllButton = () => {
     const doneColumn = document.querySelector('.column[data-status="Done"]');
-    const deleteAllButton = doneColumn.querySelector("button[data-delete]");
+    const deleteAllButton = doneColumn.querySelector("button[data-delete-all]");
     const tasksContainer = doneColumn.querySelector(".tasks");
     const taskCount = tasksContainer.children.length;
 
@@ -362,6 +362,8 @@ columnsContainer.addEventListener("click", (event) => {
         handleEdit(event);
     } else if (event.target.closest("button[data-delete]")) {
         handleDelete(event);
+    } else if (event.target.closest("button[data-delete-all]")) {
+        handleDeleteAll(event);
     }
 });
 
@@ -369,9 +371,18 @@ columnsContainer.addEventListener("click", (event) => {
 modal.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Exit if the modal is not open
+    if (!modal.open) return;
+
+    // Check if currentTask is set
+    if (!currentTask) {
+        console.log("Error: No task selected for deletion.");
+        return;
+    }
+
     // Get the task ID from the current task element
     const taskId = currentTask.id?.replace("task-", "");
-    if (!taskId) return console.error("Error: No task ID found.");
+    if (!taskId) return console.log("Error: No task ID found.");
 
     // Send a DELETE request to the server to delete the task
     try {
@@ -382,8 +393,7 @@ modal.addEventListener("submit", async (event) => {
             }
         });
 
-        // Check if the response is successful
-        // If successful, remove the task element from the DOM and show a success message
+        // If successful, remove the task element from the DOM
         if (response.ok) {
             currentTask.remove()
             currentTask = null;
@@ -407,19 +417,19 @@ modal.querySelector("#cancel").addEventListener("click", () => {
     currentTask = null;
 });
 
-// Add event listener to close the modal when the close button is clicked
-modal.addEventListener("close", () => (currentTask = null));
-
 // Add event listener for the delete button in the 'Done' column
-document.querySelector(".column-title.done button[data-delete]").addEventListener("click", handleDeleteAll);
+document.querySelector(".column-title.done button[data-delete-all]").addEventListener("click", handleDeleteAll);
 
 // Add task deletion event listener to the modal for confirmation of all tasks
 modalAll.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Exit if the modal is not open
+    if (!modalAll.open) return;
+
     // Find the 'Done' column
     const doneColumn = document.querySelector('.column[data-status="Done"]');
-    if (!doneColumn) return console.error("Error: 'Done' column not found.");
+    if (!doneColumn) return console.log("Error: 'Done' column not found.");
 
     // Get all tasks in the 'Done' column
     const tasksContainer = doneColumn.querySelector(".tasks");
