@@ -148,7 +148,7 @@ const updateTask = async (req, res) => {
             return res.status(400).json({ success: false, message: "Task is already marked as 'Done' and cannot be changed." });
         }
 
-        // If the new status is "Done" and the current status is not "Done", update the user's exp and level
+        // If the new status is "Done" and the current status is not "Done", update the user's exp, level and streak
         if (status === "Done" && existingTask.status !== "Done") {
             const expAdd = calculateExp(existingUser.level);
             const { newExp, levelIncrease } = updateLevel(existingUser.exp, expAdd);
@@ -165,11 +165,9 @@ const updateTask = async (req, res) => {
             if (lastTaskDate === today) {
                 streakUpdate = { lastTaskCompleted: new Date() };
             } else if (lastTaskDate === null || new Date(lastTaskDate) < new Date(today)) {
-                const daysDifference = Math.floor(
-                    (new Date(today) - new Date(lastTaskDate)) / (1000 * 60 * 60 * 24)
-                );
+                const daysDifference = Math.floor((new Date(today) - new Date(lastTaskDate)) / (1000 * 60 * 60 * 24));
 
-                // More than one day has passed, reset the streak
+                // More than one day has passed, reset streak to 1
                 if (daysDifference > 1) {
                     streakUpdate = { lastTaskCompleted: new Date(today), streak: 1 };
                  // Increment streak for a new day

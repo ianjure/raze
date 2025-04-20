@@ -139,4 +139,41 @@ const getStatus = async (req, res) => {
     }
 };
 
-module.exports = { getUsers, deleteUser, getLeaderboard, getStatus };
+const updateStreak = async (req, res) => {
+    // Get the user ID from the authenticated user
+    const userId = req.user.id;
+
+    // Check if the user ID is provided
+    if (!userId) {
+        return res.status(401).json({ success: false, message: "User ID is required." });
+    }
+
+    // Check if the user ID is valid
+    if(!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(404).json({ success: false, message: "Invalid user ID." });
+    }
+
+    // Check if the user exists
+    const existingUser = await User.findOne({ _id: userId });
+    if (!existingUser) {
+        return res.status(500).json({ success: false, message: "User not found." });
+    }
+
+    try {
+        // Reset the user's streak if the last task completed date is more than 24 hours ago
+        const currentDate = new Date();
+        const lastTaskCompletedDate = new Date(existingUser.lastTaskCompleted);
+        const timeDifference = currentDate - lastTaskCompletedDate;
+        const hoursDifference = timeDifference / (1000 * 60 * 60);
+        if (hoursDifference > 24) {
+            streakUpdate = { lastTaskCompleted: currentDate, streak: 0 };
+            await User.findOneAndUpdate({ _id: userId }, { $set: streakUpdate }, { new: true });
+            return res.status(200).json({ success: true, message: "Streak reset successfully!" });
+        }
+        return res.status(200).json({ success: false, message: "Streak is still active!" });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error.message });
+    }
+}
+
+module.exports = { getUsers, deleteUser, getLeaderboard, getStatus, updateStreak };

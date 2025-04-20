@@ -134,9 +134,9 @@ footer p {
 /* Toast Notification Styles */
 .toast {
     position: fixed;
-    bottom: 50px;
+    top: 25px;
     left: 50%;
-    transform: translate(-50%, 100px);
+    transform: translate(-50%, -100px);
     z-index: 1000;
     max-width: 300px;
     opacity: 0;
