@@ -33,31 +33,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.location.replace("/login");
         return;
     } else {
-        try {
-            // Send a GET request to the server to fetch user data
-            const response = await fetch("/api/user/", {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
+        // Display data to dashboard
+        document.getElementById("username").innerText = username;
+        showUserStatus();
 
-            // Display data to dashboard
-            if (response.ok) {
-                const data = await response.json();
-                document.getElementById("username").innerText = username;
-                showUserStatus();
-
-                // Hide loading screen and show dashboard
-                dashboard.style.display = "block";
-
-            } else {
-                showToast("Failed to fetch user data.", "error");
-            }
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-            showToast("An error occurred. Please try again.", "error");
-        }
+        // Hide loading screen and show dashboard
+        dashboard.style.display = "block";
     }
 });

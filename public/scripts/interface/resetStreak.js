@@ -12,12 +12,11 @@ async function resetStreak() {
 
         if (response.ok) {
             const data = await response.json();
+
             // Check if the response indicates a successful streak reset
             if (data.success) {
                 showToast("⚠️ Streak reset due to inactivity.", "success");
                 localStorage.setItem("streak", 0);
-            } else {
-                console.log(data.message);
             }
         }
     } catch (error) {

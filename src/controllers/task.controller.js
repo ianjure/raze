@@ -153,7 +153,7 @@ const updateTask = async (req, res) => {
             const expAdd = calculateExp(existingUser.level);
             const { newExp, levelIncrease } = updateLevel(existingUser.exp, expAdd);
 
-            // Check if the task is completed on a new day
+            // Get the current date and the last task completed date
             const today = new Date().toLocaleDateString("en-CA");
             const lastTaskDate = existingUser.lastTaskCompleted
                 ? existingUser.lastTaskCompleted.toISOString().split("T")[0]
@@ -164,16 +164,9 @@ const updateTask = async (req, res) => {
             // Same day, no streak update
             if (lastTaskDate === today) {
                 streakUpdate = { lastTaskCompleted: new Date() };
-            } else if (lastTaskDate === null || new Date(lastTaskDate) < new Date(today)) {
-                const daysDifference = Math.floor((new Date(today) - new Date(lastTaskDate)) / (1000 * 60 * 60 * 24));
-
-                // More than one day has passed, reset streak to 1
-                if (daysDifference > 1) {
-                    streakUpdate = { lastTaskCompleted: new Date(today), streak: 1 };
-                 // Increment streak for a new day
-                } else {
-                    streakUpdate = { lastTaskCompleted: new Date(today), streak: existingUser.streak + 1 };
-                }
+            // New day, streak update
+            } else {
+                streakUpdate = { lastTaskCompleted: new Date(today), streak: existingUser.streak + 1 };
             }
 
             await User.findOneAndUpdate(

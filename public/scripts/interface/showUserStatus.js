@@ -25,6 +25,7 @@ async function showUserStatus() {
             }
 
             // Update the streak in the UI
+            resetStreak();
             const streakElement = document.getElementById("streak");
             if (streakElement) streakElement.innerText = `🔥${data.streak}`;
 
