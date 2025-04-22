@@ -165,11 +165,13 @@ const updateStreak = async (req, res) => {
         const lastTaskCompletedDate = new Date(existingUser.lastTaskCompleted);
         const timeDifference = currentDate - lastTaskCompletedDate;
         const hoursDifference = timeDifference / (1000 * 60 * 60);
+
         if (hoursDifference > 24) {
-            streakUpdate = { lastTaskCompleted: currentDate, streak: 0 };
+            streakUpdate = { lastTaskCompleted: null, streak: 0 };
             await User.findOneAndUpdate({ _id: userId }, { $set: streakUpdate }, { new: true });
             return res.status(200).json({ success: true, message: "Streak reset successfully!" });
         }
+        
         return res.status(200).json({ success: false, message: "Streak is still active!" });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });
