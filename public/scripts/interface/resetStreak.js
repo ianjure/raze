@@ -15,8 +15,6 @@ async function resetStreak() {
 
             // Check if the response indicates a successful streak reset
             if (data.success) {
-                localStorage.setItem("streak", 0);
-                showToast("⚠️ Streak reset due to inactivity.", "success");
                 return 0;
             }
         }

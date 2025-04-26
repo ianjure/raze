@@ -29,7 +29,9 @@ async function showUserStatus() {
             const streakElement = document.getElementById("streak");
             if (newStreak !== null) {
                 streakElement.innerText = `🔥${newStreak}`;
-            } else if (streakElement) {
+                showToast("⚠️ Streak reset due to inactivity.", "success");
+                localStorage.setItem("streak", 0);
+            } else {
                 streakElement.innerText = `🔥${data.streak}`;
             }
 
