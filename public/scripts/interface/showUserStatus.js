@@ -25,15 +25,8 @@ async function showUserStatus() {
             }
 
             // Update the streak in the UI
-            const newStreak = await resetStreak();
             const streakElement = document.getElementById("streak");
-            if (newStreak !== null) {
-                streakElement.innerText = `🔥${newStreak}`;
-                showToast("⚠️ Streak reset due to inactivity.", "success");
-                localStorage.setItem("streak", 0);
-            } else {
-                streakElement.innerText = `🔥${data.streak}`;
-            }
+            streakElement.innerText = `🔥${data.streak}`;
 
             // Show streak message if the user has a streak
             if (data.streak != localStorage.getItem("streak")) {

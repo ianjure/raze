@@ -33,6 +33,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.location.replace("/login");
         return;
     } else {
+        // Update the streak in the UI
+        const newStreak = await resetStreak();
+        const streakElement = document.getElementById("streak");
+        if (newStreak !== null) {
+            streakElement.innerText = `🔥${newStreak}`;
+            showToast("⚠️ Streak reset due to inactivity.", "success");
+            localStorage.setItem("streak", 0);
+        }
+        
         // Display data to dashboard
         document.getElementById("username").innerText = username;
         showUserStatus();
