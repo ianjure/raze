@@ -177,6 +177,14 @@ header {
     margin-left: auto;
     font-size: 2rem;
 }
+.column-title.priority button {
+    margin-left: auto;
+    font-size: 1.5rem;
+}
+.column-title.in-progress button {
+    margin-left: auto;
+    font-size: 1.5rem;
+}
 .column-title.done button {
     margin-left: auto;
     font-size: 2rem;

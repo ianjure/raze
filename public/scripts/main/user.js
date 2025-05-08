@@ -120,11 +120,12 @@ const handleDragEnd = (event) => {
 // ----- Task Creation: To Create Task Elements ----- //
 
 // Function to create a task element
-const createTask = (id, content) => {
+const createTask = (id, content, createdAt) => {
     const task = document.createElement("div");
     task.className = "task";
     task.draggable = true;
     task.id = `task-${id}`;
+    task.dataset.created = createdAt;
     task.innerHTML = `
         <div>${content}</div>
         <menu>
@@ -148,7 +149,34 @@ const createTaskInput = (text = "") => {
 };
 
 
-// ----- Constant Events: To Handle Loading Tasks and Updating Task Count ----- //
+// ----- Constant Events: To Handle Loading Tasks, Sorting Tasks, and Updating Task Count ----- //
+
+// Global variable to track sort order (ascending by default)
+let sortAscending = true;
+
+// Function to toggle the visibility of the sort button based on task count
+const toggleSortButtonVisibility = (column) => {
+    const tasksContainer = column.querySelector(".tasks");
+    const sortButton = column.querySelector("button[data-sort]");
+    if (!tasksContainer || !sortButton) return;
+
+    // Hide the sort button if there is 1 or no task, otherwise show it
+    const taskCount = tasksContainer.children.length;
+    sortButton.style.display = taskCount > 1 ? "inline-block" : "none";
+};
+
+// Function to observe changes in task count for sort buttons
+const observeTaskChangesForSortButton = () => {
+    document.querySelectorAll(".column").forEach(column => {
+        const tasksContainer = column.querySelector(".tasks");
+
+        const observer = new MutationObserver(() => {
+            toggleSortButtonVisibility(column);
+        });
+
+        observer.observe(tasksContainer, { childList: true });
+    });
+};
 
 // Function to load tasks from the server
 const loadTasks = async () => {
@@ -164,12 +192,19 @@ const loadTasks = async () => {
 
         // Extract the tasks from the response
         const result = await response.json();
-        const tasks = result.data;
+        let tasks = result.data;
 
         // If the response is successful, create task elements and append them to the corresponding columns
         if (response.ok) {
+
+            // Clear existing tasks in all columns
+            document.querySelectorAll(".tasks").forEach(container => container.innerHTML = "");
+
             tasks.forEach(taskData => {
-                const taskElement = createTask(taskData._id, taskData.task);
+                const taskElement = createTask(taskData._id, taskData.task, taskData.createdAt);
+
+                // Add the creation time as a data attribute
+                taskElement.dataset.created = taskData.createdAt;
 
                 // Find the column with the matching status
                 const column = document.querySelector(`.column[data-status="${taskData.status}"]`);
@@ -191,12 +226,98 @@ const loadTasks = async () => {
                     tasksContainer.appendChild(taskElement);
                 }
             });
+
+            // Update sort button visibility after loading tasks
+            document.querySelectorAll(".column").forEach(toggleSortButtonVisibility);
+            
+            // Apply saved sort order after tasks are loaded
+            applySavedSortOrder();
         } else {
             console.log("Error: Failed to load tasks.");
         }
     } catch (error) {
         console.log(error);
     }
+};
+
+// Object to track sort order for each column (default to ascending)
+const columnSortOrder = JSON.parse(localStorage.getItem("columnSortOrder")) || {};
+
+// Function to save the current sort order to localStorage
+const saveSortOrder = () => {
+    localStorage.setItem("columnSortOrder", JSON.stringify(columnSortOrder));
+};
+
+// Add event listener to sort buttons
+columnsContainer.addEventListener("click", (event) => {
+    const sortButton = event.target.closest("button[data-sort]");
+    if (!sortButton) return;
+
+    // Get the column associated with the clicked sort button
+    const column = sortButton.closest(".column");
+    const tasksContainer = column.querySelector(".tasks");
+    const columnStatus = column.dataset.status;
+
+    // Toggle the sort order for this column
+    columnSortOrder[columnStatus] = !columnSortOrder[columnStatus];
+    saveSortOrder(); // Save the updated sort order to localStorage
+
+    // Get the tasks in the column
+    const tasks = Array.from(tasksContainer.children);
+
+    // Sort tasks by creation time based on the current sort order
+    tasks.sort((a, b) => {
+        const timeA = new Date(a.dataset.created).getTime();
+        const timeB = new Date(b.dataset.created).getTime();
+        return columnSortOrder[columnStatus] ? timeA - timeB : timeB - timeA;
+    });
+
+    // Clear the column and append the sorted tasks
+    tasksContainer.innerHTML = "";
+    tasks.forEach(task => tasksContainer.appendChild(task));
+
+    // Update the button icon
+    const icon = sortButton.querySelector("i");
+    if (columnSortOrder[columnStatus]) {
+        icon.classList.remove("bi-sort-down-alt");
+        icon.classList.add("bi-sort-up-alt");
+    } else {
+        icon.classList.remove("bi-sort-up-alt");
+        icon.classList.add("bi-sort-down-alt");
+    }
+});
+
+// Function to apply saved sort order on page load
+const applySavedSortOrder = () => {
+    Object.keys(columnSortOrder).forEach(columnStatus => {
+        const column = document.querySelector(`.column[data-status="${columnStatus}"]`);
+        if (!column) return;
+
+        const tasksContainer = column.querySelector(".tasks");
+        const tasks = Array.from(tasksContainer.children);
+
+        // Sort tasks based on the saved sort order
+        tasks.sort((a, b) => {
+            const timeA = new Date(a.dataset.created).getTime();
+            const timeB = new Date(b.dataset.created).getTime();
+            return columnSortOrder[columnStatus] ? timeA - timeB : timeB - timeA;
+        });
+
+        // Clear the column and append the sorted tasks
+        tasksContainer.innerHTML = "";
+        tasks.forEach(task => tasksContainer.appendChild(task));
+
+        // Update the button icon
+        const sortButton = column.querySelector("button[data-sort]");
+        const icon = sortButton.querySelector("i");
+        if (columnSortOrder[columnStatus]) {
+            icon.classList.remove("bi-sort-down-alt");
+            icon.classList.add("bi-sort-up-alt");
+        } else {
+            icon.classList.remove("bi-sort-up-alt");
+            icon.classList.add("bi-sort-down-alt");
+        }
+    });
 };
 
 // Function to update task count in each column
@@ -236,6 +357,7 @@ const observeTaskChanges = () => {
 // Call function to load tasks on page load and observe changes
 loadTasks();
 observeTaskChanges();
+observeTaskChangesForSortButton();
 
 
 // -- Task Actions: To Handle Task Creation, Editing, and Deletion -- //
@@ -326,7 +448,7 @@ const handleBlur = async (event) => {
 
         // If the response is successful, create or update the task element
         if (response.ok) {
-            const task = createTask(data.data._id || taskId, content.replace(/\n/g, "<br>"));
+            const task = createTask(data.data._id || taskId, content.replace(/\n/g, "<br>"), data.data.createdAt);
             input.replaceWith(task);
 
             if (taskId) {
