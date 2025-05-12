@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
         // Ensure users are on their own page
-        if (currentPage !== `/${username}`) {
+        if (currentPage !== `/${username}` && currentPage !== "/leaderboards") {
             window.location.replace(`/${username}`);
             return;
         }

@@ -102,6 +102,24 @@ header {
     cursor: pointer;
     font-size: 14px;
 }
+.leaderboard-button {
+    background-color: #3F85F4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+.leaderboard-button i {
+    margin-right: 10px;
+}
+.header-actions {
+    display: flex;
+    gap: 16px; 
+    align-items: center;
+}
 .logout-button i {
     margin-right: 10px;
 }

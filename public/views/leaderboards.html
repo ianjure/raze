@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles/user-dashboard.css">
+    <link rel="stylesheet" href="../styles/leaderboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+
+    <!-- High Priority Scripts -->
+    <script src="../scripts/security/protect.js" defer></script>
+    <script src="../scripts/interface/showToast.js" defer></script>
+    <script src="../scripts/security/auth.js" defer></script>
+    <script src="../scripts/interface/resetStreak.js" defer></script>
+    <script src="../scripts/main/user.js" defer></script>
+</head>
+<body>
+    <!-- Menu Header -->
+    <header>
+        <div class="profile">
+            <div class="exp-circle">
+                <div class="progress-circle">
+                    <img id="profile-picture" alt="Profile Picture">
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="username">
+                    <span id="username"></span>
+                </div>
+                <div class="details">
+                    <span id="level"></span>
+                    <span id="streak"></span>
+                </div>
+            </div>
+        </div>
+       <div class="header-actions">
+            <a href="/:username" class="dashboard-button"><i class="bi bi-house-door"></i>Dashboard</a>
+            <button class="logout-button" id="logout-button"><i class="bi bi-box-arrow-right"></i>Log Out</button>
+        </div>
+    </header>
+
+    <!-- Leaderboard Section -->
+    <div class="table-container">
+        <table class="leaderboard-table">
+            <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th class="stats">Stats</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Low Priority Scripts -->
+    <script src="../scripts/interface/leaderboards.js" defer></script>
+    <script src="../scripts/interface/userDashboard.js" defer></script>
+    <script src="../scripts/interface/showUserStatus.js" defer></script>
+    <script src="../scripts/interface/updateProgress.js" defer></script>
+    <script src="../scripts/interface/updateFavicon.js" defer></script>
+</body>
+</html>
