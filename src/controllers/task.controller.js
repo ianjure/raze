@@ -27,8 +27,8 @@ const getAllTasks = async (req, res) => {
     }
 
     try {
-        // Find all tasks in the database and select only the status field
-        const tasks = await Task.find({}).select(["status"]);
+        // Find all tasks in the database that are not marked as "Done" and select only the status field
+        const tasks = await Task.find({ status: { $ne: "Done" } }).select(["status"]);
         return res.status(200).json({ success: true, data: tasks });
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message });

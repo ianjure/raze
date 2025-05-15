@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Raze</title>
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../styles/admin-dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 
+    <!-- High Priority Scripts -->
     <script src="../scripts/security/protect.js" defer></script>
     <script src="../scripts/interface/showToast.js" defer></script>
     <script src="../scripts/security/auth.js" defer></script>
     <script src="../scripts/main/admin.js" defer></script>
 </head>
-
 <body>
+    <!-- Menu Header -->
     <header>
         <div class="profile">
             <img id="profile-picture" alt="Profile Picture">
@@ -26,19 +28,20 @@
         <button class="logout-button" id="logout-button"><i class="bi bi-box-arrow-right"></i>Log Out</button>
     </header>
 
+    <!-- Main Dashboard -->
     <main class="admin-main-content">
         <section class="metric-cards">
             <div class="card">
                 <h3>Total Number of Users</h3>
-                <p id="total-users-count">Loading...</p>
+                <p id="total-users-count"></p>
             </div>
             <div class="card">
-                <h3>Total Tasks Completed</h3>
-                <p id="total-tasks-count">Loading...</p>
+                <h3>Total Tasks Available</h3>
+                <p id="total-tasks-count"></p>
             </div>
             <div class="card">
-                <h3>Total Streaks</h3>
-                <p id="total-streaks-count">Loading...</p>
+                <h3>Total Days Streaks</h3>
+                <p id="total-streaks-count"></p>
             </div>
         </section>
 
@@ -46,24 +49,17 @@
             <div class="section-header">
                 <h2>Users</h2>
                 <div class="search-bar">
+                    <i class="bi bi-search"></i>
                     <input type="text" id="user-search-input" placeholder="Search users...">
-                    <button id="user-search-button"><i class="bi bi-search"></i> Search</button>
                 </div>
             </div>
 
             <div class="user-list-container">
-                <div class="user-row">
-                     <span class="user-name">User1</span>
-                     <button class="delete-user-button">Delete</button>
-                 </div>
-                 <div class="user-row">
-                     <span class="user-name">User2</span>
-                     <button class="delete-user-button">Delete</button>
-                 </div>
-                </div>
+            </div>
         </section>
     </main>
 
+    <!-- Modal -->
     <dialog class="confirm-modal">
         <form method="dialog">
             <h3>Delete User?</h3>
@@ -77,6 +73,7 @@
         </form>
     </dialog>
 
+    <!-- Toast Notification -->
     <div id="toast" class="toast">
         <div id="toast-content" class="toast-content">
           <span id="toast-message"></span>
@@ -84,6 +81,7 @@
     </div>
 
     <script src="../scripts/interface/adminDashboard.js" defer></script>
+    <script src="../scripts/interface/showAdminStatus.js" defer></script>
     <script src="../scripts/interface/updateFavicon.js" defer></script>
 </body>
 </html>

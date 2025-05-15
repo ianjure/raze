@@ -4,13 +4,13 @@
     --bg-color: #FBFBFB;
     --text-color: #404040;
     --task-color: #F6F6F6;
-    --primary-color: #475569; /* A slightly darker blue/grey, adjust if needed to match image */
-    --secondary-color: #CBD5E1; /* Light grey/blue, adjust if needed */
-    --primary-button-color: #EA4235; /* Red */
-    --primary-button-hover-color: #922820; /* Darker Red */
-    --secondary-button-color: #E5E7EB; /* Light grey */
-    --secondary-button-hover-color: #D5D7DB; /* Slightly darker grey */
-    --task-size: 48px; /* Seems unrelated to admin dashboard, but kept */
+    --primary-color: #475569;
+    --secondary-color: #CBD5E1;
+    --primary-button-color: #EA4235;
+    --primary-button-hover-color: #922820;
+    --secondary-button-color: #E5E7EB;
+    --secondary-button-hover-color: #D5D7DB;
+    --task-size: 48px;
 
     /* New variables for admin dashboard specific colors/spacing */
     --admin-card-bg: #FFFFFF;
@@ -34,7 +34,7 @@ body {
     background: var(--bg-color);
     margin: 0;
     min-height: 100vh;
-    color: var(--text-color); /* Apply default text color */
+    color: var(--text-color);
 }
 
 /* Menu Header Styles */
@@ -44,9 +44,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px var(--admin-padding); /* Use admin padding variable */
+    padding: 10px 20px;
     background-color: var(--bg-color);
-    color: white; /* This might be overridden by text-color on body */
+    color: white;
     border-bottom: 2px solid var(--secondary-color);
     z-index: 1000;
 }
@@ -81,7 +81,7 @@ header {
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: var(--admin-border-radius); /* Use variable */
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 14px;
 }
@@ -92,131 +92,120 @@ header {
     background-color: var(--primary-button-hover-color);
 }
 
-/* Main content area styles */
+/* Main Dashboard Styles */
 .admin-main-content {
-    padding: var(--admin-padding); /* Apply consistent padding */
+    padding: var(--admin-padding);
     display: flex;
     flex-direction: column;
-    gap: var(--admin-gap); /* Space between sections */
+    gap: var(--admin-gap);
 }
-
-/* Metric Cards Section Styles */
 .metric-cards {
     display: flex;
-    justify-content: space-between; /* Distribute cards evenly */
-    gap: var(--admin-gap); /* Space between cards */
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    justify-content: space-between;
+    gap: var(--admin-gap);
+    flex-wrap: wrap;
 }
-
 .metric-cards .card {
-    flex: 1; /* Allow cards to grow and shrink */
-    min-width: 200px; /* Minimum width for cards before wrapping */
+    flex: 1;
+    min-width: 200px;
     background-color: var(--admin-card-bg);
-    border: 1px solid var(--admin-card-border);
+    border: 1px solid var(--secondary-color);
     border-radius: var(--admin-border-radius);
     padding: var(--admin-padding);
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
-
 .metric-cards .card h3 {
     font-size: 1rem;
-    color: #666; /* Slightly muted color for the title */
+    color: #666;
     margin-bottom: 0.5rem;
 }
-
 .metric-cards .card p {
-    font-size: 2em; /* Larger font size for the numbers */
+    font-size: 2rem;
     font-weight: bold;
-    color: var(--primary-color); /* Use a primary color for the numbers */
+    color: var(--primary-color);
 }
-
-/* User Management Section Styles */
 .user-management {
     background-color: var(--admin-section-bg);
-    border: 1px solid var(--admin-card-border); /* Use card border color */
+    border: 1px solid var(--secondary-color);
     border-radius: var(--admin-border-radius);
     padding: var(--admin-padding);
     display: flex;
     flex-direction: column;
-    gap: var(--admin-gap); /* Space between header and list */
+    gap: var(--admin-gap);
 }
-
 .user-management .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow header elements to wrap */
-    gap: var(--admin-gap); /* Space between title and search */
+    flex-wrap: wrap;
+    gap: var(--admin-gap);
 }
-
 .user-management .section-header h2 {
     font-size: 1.5rem;
+    font-weight: bold;
     color: var(--text-color);
 }
-
 .user-management .search-bar {
     display: flex;
     gap: 0.5rem;
 }
-
 .user-management .search-bar input[type="text"] {
     padding: 0.5rem 1rem;
-    border: 1px solid var(--admin-card-border);
+    border: 1px solid var(--secondary-color);
     border-radius: var(--admin-border-radius);
     font-size: 1rem;
-    flex-grow: 1; /* Allow input to take available space */
-    min-width: 150px; /* Ensure input is not too small */
+    flex-grow: 1;
+    min-width: 150px;
 }
-
-.user-management .search-bar button {
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color); /* Use a primary color for the search button */
-    color: white;
-    border: none;
-    border-radius: var(--admin-border-radius);
-    cursor: pointer;
-    font-size: 1rem;
+.user-management .search-bar i {
+    padding: 5px;
+    color: var(--primary-color);
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
-    gap: 5px;
 }
-
-.user-management .search-bar button:hover {
-    background-color: var(--primary-button-hover-color); /* Use hover color from primary button */
-}
-
-
 .user-list-container {
-    max-height: 300px; /* Set a max height to enable scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border-top: 1px solid var(--admin-card-border); /* Separator from header */
-    padding-top: var(--admin-gap); /* Space above the first user */
+    max-height: 600px;
+    overflow-y: auto;
+    border-top: 1px solid var(--admin-card-border);
+    padding-top: var(--admin-gap);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /* Space between user rows */
+    gap: 0.5rem;
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
 }
-
+.user-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+.user-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.user-list-container::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+}
+.user-list-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
 .user-management .user-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0; /* Padding top/bottom, no side padding as container has it */
-    border-bottom: 1px solid var(--secondary-button-color); /* Subtle separator */
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--secondary-button-color);
 }
-
 .user-management .user-row:last-child {
-    border-bottom: none; /* No border on the last item */
+    border-bottom: none;
 }
-
 .user-management .user-name {
-    flex-grow: 1; /* Allow name to take space */
-    margin-right: 1rem; /* Space between name and button */
+    flex-grow: 1;
+    margin-right: 1rem;
     font-size: 1rem;
 }
-
 .user-management .delete-user-button {
-    background-color: var(--primary-button-color); /* Use delete button color */
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 0.4rem 0.8rem;
@@ -224,13 +213,26 @@ header {
     cursor: pointer;
     font-size: 0.9rem;
 }
-
 .user-management .delete-user-button:hover {
-    background-color: var(--primary-button-hover-color);
+    background-color: var(--text-color);
+}
+@media (max-width: 768px) {
+    .metric-cards {
+        flex-direction: column;
+    }
+
+    .metric-cards .card {
+        min-width: 0;
+        flex-basis: auto;
+    }
+
+    .user-management .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
-
-/* Modal Styles (Existing code) */
+/* Modal Styles */
 .confirm-modal[open] {
     opacity: 1;
     transform: translate(-50%, -50%) translateY(0);
@@ -241,7 +243,7 @@ header {
     left: 50%;
     top: 50%;
     border: none;
-    border-radius: var(--admin-border-radius); /* Use variable */
+    border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s allow-discrete;
 }
@@ -263,18 +265,18 @@ header {
     }
 }
 .confirm-modal form {
-    padding: 2rem; /* Keep existing padding */
+    padding: 2rem;
 }
 .confirm-modal form > *:not(:last-child) {
-    margin-bottom: 1rem; /* Keep existing margin */
+    margin-bottom: 1rem;
 }
 .confirm-modal h3 {
-    font-size: 1.5rem; /* Keep existing font size */
+    font-size: 1.5rem;
 }
 .confirm-modal div.preview {
-    font-size: 0.875rem; /* Keep existing font size */
-    padding-left: 0.5rem; /* Keep existing padding */
-    border-left: 2px solid var(--secondary-color); /* Keep existing border */
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--secondary-color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -283,34 +285,34 @@ header {
 .confirm-modal menu {
     display: flex;
     justify-content: flex-end;
-    gap: 0.5rem; /* Keep existing gap */
+    gap: 0.5rem;
 }
 .confirm-modal button {
     opacity: 1;
-    font-size: 1rem; /* Keep existing font size */
-    padding: 0.5rem 1rem; /* Keep existing padding */
-    border-radius: var(--admin-border-radius); /* Use variable */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     border: 1px solid transparent;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 .confirm-modal button#cancel {
-    background: var(--secondary-button-color); /* Keep existing color */
+    background: var(--secondary-button-color);
 }
 .confirm-modal button#cancel:hover {
-    background: var(--secondary-button-hover-color); /* Keep existing hover color */
+    background: var(--secondary-button-hover-color);
     cursor: pointer;
 }
 .confirm-modal button#confirm {
-    background: var(--primary-button-color); /* Keep existing color */
+    background: var(--primary-button-color);
     color: white;
 }
 .confirm-modal button#confirm:hover {
-    background: var(--primary-button-hover-color); /* Keep existing hover color */
+    background: var(--primary-button-hover-color);
     color: white;
     cursor: pointer;
 }
 
-/* Toast Notification Styles (Existing code) */
+/* Toast Notification Styles */
 .toast {
     position: fixed;
     bottom: 50px;
@@ -327,12 +329,12 @@ header {
 }
 .toast-content {
     padding: 12px 16px;
-    border-radius: var(--admin-border-radius); /* Use variable */
+    border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
     font-weight: 500;
     text-align: center;
-    border: 1px solid var(--secondary-color); /* Keep existing border */
+    border: 1px solid var(--secondary-color);
 }
 .toast-content.success {
     background-color: #ffffff !important;
@@ -341,21 +343,4 @@ header {
 .toast-content.error {
     background-color: #ef4444 !important;
     color: white !important;
-}
-
-/* Responsive adjustments (Optional but recommended) */
-@media (max-width: 768px) {
-    .metric-cards {
-        flex-direction: column; /* Stack cards vertically on smaller screens */
-    }
-
-    .metric-cards .card {
-        min-width: 0; /* Remove min-width when stacking */
-        flex-basis: auto; /* Reset flex basis */
-    }
-
-    .user-management .section-header {
-        flex-direction: column; /* Stack header elements */
-        align-items: flex-start;
-    }
 }

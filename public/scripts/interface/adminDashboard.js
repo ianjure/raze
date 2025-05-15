@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.replace("/login");
         return;
     } else {
-        // Set username on the page
+        // Display data to dashboard
         document.getElementById("username").innerText = username;
+        showAdminStatus();
 
         // Hide loading screen and show dashboard
         dashboard.style.display = "block";
