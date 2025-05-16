@@ -165,7 +165,7 @@ header {
     align-items: center;
 }
 .user-list-container {
-    max-height: 600px;
+    max-height: 400px;
     overflow-y: auto;
     border-top: 1px solid var(--admin-card-border);
     padding-top: var(--admin-gap);
