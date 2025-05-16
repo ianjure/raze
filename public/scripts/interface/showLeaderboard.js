@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // User row
                     const tr = document.createElement("tr");
-                    tr.className = "current-user";
+                    tr.className = "current-user last-user-row";
                     tr.innerHTML = `
                         <td class="rank center">${userRank || "?"}</td>
                         <td class="username">${username}</td>

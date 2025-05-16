@@ -258,6 +258,33 @@ header {
 }
 
 /* Leaderboard Styles */
+.leaderboard-btn {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: background 0.2s, color 0.2s;
+    padding: 0;
+}
+.leaderboard-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.leaderboard-btn i {
+    margin: 0;
+}
 .leaderboard-modal {
     min-width: 350px;
     max-width: 95vw;
@@ -265,17 +292,25 @@ header {
     top: 50%;
     border: none;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translate(-50%, -50%);
     padding: 0;
 }
+.leaderboard-modal[open]::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+}
+.leaderboard-modal::backdrop {
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.3s allow-discrete;
+}
 .leaderboard-modal h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
+    color: var(--primary-color);
 }
 .leaderboard-modal form {
     position: relative;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
 }
 .close-leaderboard-btn {
     position: absolute;
@@ -291,7 +326,7 @@ header {
     transition: color 0.2s;
 }
 .close-leaderboard-btn:hover {
-    color: #EA4235;
+    color: var(--text-color);
 }
 .leaderboard-table {
     width: 100%;
@@ -300,22 +335,31 @@ header {
 }
 .leaderboard-table th, .leaderboard-table td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--secondary-color);
     font-size: 1rem;
 }
 .leaderboard-table th {
-    background: #f6f6f6;
-    color: var(--primary-color);
+    background: rgb(237, 237, 237);
+    color: var(--text-color);
+    font-size: 0.8rem;
     font-weight: 600;
+    text-align: left;
 }
-.leaderboard-table td.center, .leaderboard-table th.center {
+.leaderboard-table th.rank,
+.leaderboard-table th.center {
     text-align: center;
+}
+.leaderboard-table td.center {
+    text-align: center;
+}
+.leaderboard-table td.stats {
+    font-size: 0.9rem;
 }
 .leaderboard-table td.gold { color: #FFD700; font-weight: bold; }
 .leaderboard-table td.silver { color: #C0C0C0; font-weight: bold; }
 .leaderboard-table td.bronze { color: #CD7F32; font-weight: bold; }
 .leaderboard-table tr.current-user {
-    background: #ffe9e3;
+    background: #fcba0522;
     font-weight: bold;
 }
 .leaderboard-table tr.separator-row td {
@@ -324,32 +368,13 @@ header {
     height: 0.5rem;
     padding: 0;
 }
-.leaderboard-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #fff;
-    color: #EA4235;
-    border: 2px solid #EA4235;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    cursor: pointer;
-    z-index: 1100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    transition: background 0.2s, color 0.2s;
-    padding: 0;
+/* Remove bottom border for the last row in the top 10 if user is in top 10 */
+.leaderboard-table td {
+    border-bottom: none;
 }
-.leaderboard-btn:hover {
-    background: #EA4235;
-    color: #fff;
-}
-.leaderboard-btn i {
-    margin: 0;
+/* Only show bottom border for the separated user row (when not in top 10) */
+.leaderboard-table tr.last-user-row td {
+    border-bottom: 1px solid #e5e7eb;
 }
 
 /* Modal Styles */
