@@ -70,6 +70,27 @@
         </div>
     </div>
 
+    <!-- Leaderboard -->
+    <dialog class="leaderboard-modal">
+        <form method="dialog">
+            <button type="button" id="close-leaderboard" class="close-leaderboard-btn" aria-label="Close"><i class="bi bi-x"></i></button>
+            <h3>Leaderboard</h3>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th class="rank center">#</th>
+                        <th class="username">Username</th>
+                        <th class="stats center">Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" class="center">Loading...</td></tr>
+                </tbody>
+            </table>
+        </form>
+    </dialog>
+    <button id="open-leaderboard" class="leaderboard-btn" aria-label="Leaderboard"><i class="bi bi-trophy"></i></button>
+
     <!-- Modal -->
     <dialog class="confirm-modal">
         <form method="dialog">
@@ -105,6 +126,7 @@
     <!-- Low Priority Scripts -->
     <script src="../scripts/interface/userDashboard.js" defer></script>
     <script src="../scripts/interface/showUserStatus.js" defer></script>
+    <script src="../scripts/interface/showLeaderboard.js" defer></script>
     <script src="../scripts/interface/updateProgress.js" defer></script>
     <script src="../scripts/interface/updateFavicon.js" defer></script>
 </body>

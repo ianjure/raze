@@ -111,6 +111,42 @@ const getLeaderboard = async (req, res) => {
     }
 };
 
+const getRank = async (req, res) => {
+    // Get the user ID from the authenticated user
+    const userId = req.user.id;
+
+    // Check if the user ID is provided
+    if (!userId) {
+        return res.status(401).json({ success: false, message: "User ID is required." });
+    }
+
+    // Check if the user ID is valid
+    if(!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(404).json({ success: false, message: "Invalid user ID." });
+    }
+
+    // Check if the user exists
+    const existingUser = await User.findOne({ _id: userId });
+    if (!existingUser) {
+        return res.status(500).json({ success: false, message: "User not found." });
+    }
+
+    try {
+        // Count users with higher level or same level but higher exp
+        const betterCount = await User.countDocuments({
+            role: "User",
+            $or: [
+                { level: { $gt: existingUser.level } },
+                { level: existingUser.level, exp: { $gt: existingUser.exp } }
+            ]
+        });
+        const rank = betterCount + 1;
+        return res.status(200).json({ success: true, data: { rank, level: existingUser.level, exp: existingUser.exp } });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error.message });
+    }
+};
+
 const getStatus = async (req, res) => {
     // Get the user ID from the authenticated user
     const userId = req.user.id;
@@ -178,4 +214,4 @@ const updateStreak = async (req, res) => {
     }
 }
 
-module.exports = { getUsers, deleteUser, getLeaderboard, getStatus, updateStreak };
+module.exports = { getUsers, deleteUser, getLeaderboard, getRank, getStatus, updateStreak };

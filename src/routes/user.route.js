@@ -1,7 +1,7 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/auth.middleware");
 const { signup, login, logout, validate } = require("../controllers/auth.controller");
-const { getUsers, deleteUser, getLeaderboard, getStatus, updateStreak } = require("../controllers/user.controller");
+const { getUsers, deleteUser, getLeaderboard, getRank, getStatus, updateStreak } = require("../controllers/user.controller");
 
 // Initialize the router
 const router = express.Router();
@@ -18,6 +18,7 @@ router.delete("/:id", authMiddleware, deleteUser);
 
 // ----- User ----- //
 router.get("/leaderboard", authMiddleware, getLeaderboard);
+router.get("/rank", authMiddleware, getRank);
 router.get("/", authMiddleware, getStatus);
 router.post("/streak", authMiddleware, updateStreak);
 
