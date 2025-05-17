@@ -60,12 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         userExp = userRankData.data.exp;
                     }
 
-                    // Separator row
-                    const sep = document.createElement("tr");
-                    sep.className = "separator-row";
-                    sep.innerHTML = `<td colspan="3"></td>`;
-                    tbody.appendChild(sep);
-
                     // User row
                     const tr = document.createElement("tr");
                     tr.className = "current-user last-user-row";

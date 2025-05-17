@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Get the username and password from the form
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirm-password").value;
+
+            // Check if passwords match before sending request
+            if (password !== confirm) {
+                showToast("Passwords do not match.", "error");
+                return; // Stop further execution
+            }
 
             try {
                 // Send a POST request to the server
